@@ -6,19 +6,20 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#1D1D1D", // Dark gothic background
-    paddingHorizontal: 20,
   },
   titleContainer: {
     position: "relative", // Needed for sparkles to overlay on text
-    marginBottom: 20,
   },
   title: {
     fontSize: 36,
     fontFamily: 'CinzelDecorative',
     color: "white", // Purple for that gothic vibe
     textAlign: "center",
+    marginTop: 30,
+    marginBottom: 50,
   },
   sparkle: {
+    marginTop: 35,
     position: "absolute",
     width: 10,
     height: 10,

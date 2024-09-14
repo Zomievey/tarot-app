@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#1D1D1D", // Dark gothic background
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   welcome: {
     fontSize: 18,
@@ -16,8 +16,8 @@ export default StyleSheet.create({
     marginBottom: 15,
   },
   cardWrapper: {
-    width: 200, // Set width of card wrapper
-    height: 300, // Set height of card wrapper
+    width: 350, // Set width of card wrapper
+    height: 350, // Set height of card wrapper
     justifyContent: "center",
     alignItems: "center",
     position: "relative", // Ensures absolute positioning works inside
@@ -39,26 +39,22 @@ export default StyleSheet.create({
     opacity: 0,
   },
   cardImage: {
-    width: 200,
-    height: 330,
-    marginVertical: 20,
-    borderRadius: 8,
-    borderColor: "#1C152A",
-    borderWidth: 2,
+    width: '100%', // Use the full width of the cardWrapper
+    height: '100%', // Use the full height of the cardWrapper
+    resizeMode: "contain", // Ensure the image covers the container
+    marginVertical: 10,
   },
   cardDescription: {
     fontSize: 16,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
-    marginBottom: 20,
   },
   cardDescriptionBack: {
     fontSize: 16,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
-    marginBottom: 20,
     opacity: 0,
   },
   buttonStyle: {
@@ -66,7 +62,7 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
-    marginTop: 300,
+    marginTop: 175,
   },
   buttonHover: {
     backgroundColor: "#9543E8", // Hover state color
