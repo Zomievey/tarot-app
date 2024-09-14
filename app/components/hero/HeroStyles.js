@@ -14,8 +14,8 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontFamily: 'CinzelDecorative_400Regular',
-    color: "#A46CFF", // Purple for that gothic vibe
+    fontFamily: 'CinzelDecorative',
+    color: "white", // Purple for that gothic vibe
     textAlign: "center",
   },
   sparkle: {

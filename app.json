@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "tarot-card-app",
-    "slug": "tarot-card-app",
+    "slug": "tarot-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -31,6 +31,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "305e671b-7b56-4ec5-b0d5-515e5606c8ed"
+      }
+    },
+    "owner": "zomievey"
   }
 }

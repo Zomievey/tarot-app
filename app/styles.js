@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
@@ -8,18 +8,12 @@ export default StyleSheet.create({
     backgroundColor: "#1D1D1D", // Dark gothic background
     paddingHorizontal: 20,
   },
-  title: {
-    fontSize: 36,
-    color: "#A46CFF", // Purple for that gothic vibe
-    fontFamily: "serif",
-    marginBottom: 20,
-  },
   welcome: {
     fontSize: 18,
     color: "#FFFFFF",
     fontFamily: "serif",
     textAlign: "center",
-    marginBottom: 20,
+    marginBottom: 15,
   },
   cardWrapper: {
     width: 200, // Set width of card wrapper
@@ -33,51 +27,54 @@ export default StyleSheet.create({
     backfaceVisibility: "hidden",
   },
   cardName: {
-    fontSize: 24,
+    fontSize: 28,
     color: "#FFFFFF",
-    marginVertical: 10,
     fontFamily: "serif",
     textAlign: "center",
   },
   cardNameBack: {
     fontSize: 24,
     color: "#FFFFFF",
-    marginVertical: 10,
     fontFamily: "serif",
     opacity: 0,
   },
   cardImage: {
     width: 200,
-    height: 300,
+    height: 330,
     marginVertical: 20,
     borderRadius: 8,
-    borderColor: "#A46CFF",
+    borderColor: "#1C152A",
     borderWidth: 2,
   },
   cardDescription: {
     fontSize: 16,
-    color: "#CCCCCC",
+    color: "white",
     textAlign: "center",
     fontFamily: "serif",
     marginBottom: 20,
   },
   cardDescriptionBack: {
     fontSize: 16,
-    color: "#CCCCCC",
+    color: "white",
     textAlign: "center",
     fontFamily: "serif",
     marginBottom: 20,
     opacity: 0,
   },
   buttonStyle: {
-    backgroundColor: "#A46CFF",
+    backgroundColor: "#1C152A",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: "center",
-    marginTop: 150,
+    marginTop: 300,
+  },
+  buttonHover: {
+    backgroundColor: "#9543E8", // Hover state color
   },
   buttonText: {
-    color: "#fff",
+    color: "white",
     fontSize: 16,
+    marginHorizontal: 1,
+    marginVertical: 1,
   },
 });
