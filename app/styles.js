@@ -1,12 +1,27 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+// Get the screen dimensions
+const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1D1D1D", // Dark gothic background
-    paddingHorizontal: 10,
+    paddingHorizontal: 10, // Added more padding
+  },
+  title: {
+    fontSize: 44,
+    color: "white", // A mystical purple color for the title
+    textAlign: "center",
+    marginBottom: 15,
+  },
+  subtitle: {
+    fontSize: 26,
+    color: "white", // A light gray color for the subtitle
+    fontFamily: "serif",
+    textAlign: "center",
+    marginBottom: 30,
   },
   welcome: {
     fontSize: 18,
@@ -16,8 +31,8 @@ export default StyleSheet.create({
     marginBottom: 15,
   },
   cardWrapper: {
-    width: 350, // Set width of card wrapper
-    height: 350, // Set height of card wrapper
+    width: width * 0.9, // Use 90% of the screen width for the card
+    height: height * 0.5, // Use 50% of the screen height for the card
     justifyContent: "center",
     alignItems: "center",
     position: "relative", // Ensures absolute positioning works inside
@@ -27,28 +42,32 @@ export default StyleSheet.create({
     backfaceVisibility: "hidden",
   },
   cardName: {
-    fontSize: 28,
+    fontSize:30,
     color: "#FFFFFF",
-    fontFamily: "serif",
     textAlign: "center",
+    width: "100%",
+    marginBottom: 20,
   },
   cardNameBack: {
-    fontSize: 24,
+    fontSize: 30,
     color: "#FFFFFF",
-    fontFamily: "serif",
+    textAlign: "center",
+    width: "100%",
+    marginBottom: 20,
     opacity: 0,
   },
   cardImage: {
-    width: '100%', // Use the full width of the cardWrapper
-    height: '100%', // Use the full height of the cardWrapper
-    resizeMode: "contain", // Ensure the image covers the container
-    marginVertical: 10,
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
+    textAlign: "center",
   },
   cardDescription: {
     fontSize: 16,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
+    marginTop: 10,
   },
   cardDescriptionBack: {
     fontSize: 16,
@@ -62,15 +81,25 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
+    alignSelf: "center",
     marginTop: 175,
   },
+
+  homebuttonStyle: {
+    backgroundColor: "#1C152A",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    margin: 10,
+  },
   buttonHover: {
-    backgroundColor: "#9543E8", // Hover state color
+    backgroundColor: "#9543E8",
   },
   buttonText: {
     color: "white",
     fontSize: 16,
     marginHorizontal: 1,
     marginVertical: 1,
+    fontFamily: "Cinzel-Decorative",
   },
 });

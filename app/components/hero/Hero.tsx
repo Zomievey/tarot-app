@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Animated, Dimensions } from "react-native";
 import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen"; // SplashScreen to hold the app until fonts load
+import * as SplashScreen from "expo-splash-screen";
 import styles from "../hero/HeroStyles";
 
 const screenWidth = Dimensions.get("window").width;
 
-const Hero = () => {
+export default function Hero() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const [sparkles] = useState(
     Array(8)
@@ -73,6 +73,4 @@ const Hero = () => {
       </Text>
     </View>
   );
-};
-
-export default Hero;
+}
