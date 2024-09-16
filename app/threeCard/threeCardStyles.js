@@ -97,7 +97,7 @@ export default StyleSheet.create({
     borderRadius: 10 * scaleFactor,
     alignItems: "center",
     alignSelf: "center",
-    marginTop: 75 * scaleFactor,
+    marginTop: 100 * scaleFactor,
   },
   homebuttonStyle: {
     backgroundColor: "#1C152A",
