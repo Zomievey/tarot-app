@@ -2,11 +2,10 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-// Determine if the device is an iPad or a web platform
-const isTabletOrWeb = Platform.OS === 'web' || (Platform.OS === 'ios' && height / width < 1.6); // Approximate aspect ratio for iPads
+const isTabletOrWeb =
+  Platform.OS === "web" || (Platform.OS === "ios" && height / width < 1.6);
 
-// Define scaling factors for tablet/web
-const scaleFactor = isTabletOrWeb ? 1.5 : 1; // Increase sizes by 1.5 times for iPad and web
+const scaleFactor = isTabletOrWeb ? 1.5 : 1;
 
 export default StyleSheet.create({
   threeContainer: {
@@ -21,11 +20,11 @@ export default StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "flex-start",
     width: width * 0.95,
-    height: height * (isTabletOrWeb ? 0.6 : 0.5), // More height for larger screens
+    height: height * (isTabletOrWeb ? 0.6 : 0.5),
     marginBottom: 20 * scaleFactor,
   },
   threeCardContainer: {
-    width: width * (isTabletOrWeb ? 0.25 : 0.3), // Adjust the width based on the screen size
+    width: width * (isTabletOrWeb ? 0.25 : 0.3),
     justifyContent: "flex-start",
     alignItems: "center",
     position: "relative",
@@ -57,20 +56,28 @@ export default StyleSheet.create({
     width: "100%",
     height: 180 * scaleFactor,
     resizeMode: "contain",
-    marginBottom: 30 * scaleFactor,
+    marginBottom: 20 * scaleFactor,
   },
   threeCardDescription: {
     fontSize: 14 * scaleFactor,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
-    flexWrap: "wrap",
     lineHeight: 18 * scaleFactor,
     marginTop: 5 * scaleFactor,
     width: "100%",
-    height: 350 * scaleFactor,
-    overflow: "hidden",
+    ...Platform.select({
+      web: {
+        height: "auto",
+        overflow: "visible",
+      },
+      default: {
+        height: 350 * scaleFactor,
+        overflow: "hidden",
+      },
+    }),
   },
+
   threeCardDescriptionBack: {
     fontSize: 14 * scaleFactor,
     color: "white",

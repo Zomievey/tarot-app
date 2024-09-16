@@ -17,12 +17,10 @@ export default function Layout() {
     }
   }, [fontsLoaded]);
 
-  // Determine if the device is an iPad or web platform
   const { width, height } = Dimensions.get("window");
   const isTabletOrWeb =
     Platform.OS === "web" || (Platform.OS === "ios" && height / width < 1.6);
 
-  // Define scaling factors for tablet/web
   const headerFontSize = isTabletOrWeb ? 28 : 18;
   const backTitleFontSize = isTabletOrWeb ? 20 : 14;
 
@@ -36,9 +34,7 @@ export default function Layout() {
         screenOptions={{
           headerShown: true,
           title: "",
-          headerStyle: {
-            backgroundColor: "#1C152A",
-          },
+          headerTransparent: true,
           headerTintColor: "#FFFFFF",
           headerTitleStyle: {
             fontWeight: "bold",

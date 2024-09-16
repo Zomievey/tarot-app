@@ -2,11 +2,9 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-// Determine if the device is an iPad or a web platform
 const isTabletOrWeb =
   Platform.OS === "web" || (Platform.OS === "ios" && height / width < 1.6);
 
-// Define scaling factors for tablet/web
 const scaleFactor = isTabletOrWeb ? 1.5 : 1;
 
 export default StyleSheet.create({
