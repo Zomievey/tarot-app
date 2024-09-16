@@ -25,10 +25,9 @@ export default function ThreeCard() {
   const [cards, setCards] = useState<
     Array<{ card: TarotCard; isReversed: boolean }>
   >([]);
-  const [flippedCards, setFlippedCards] = useState<number[]>([]); // Track flipped cards
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [isHovered, setIsHovered] = useState(false);
-  const [flipAnim] = useState(new Animated.Value(0)); // Animation value for flip
-
+  const [flipAnim] = useState(new Animated.Value(0));
   const cardBack =
     Platform.OS === "web"
       ? "/assets/images/back-card.png"
@@ -76,7 +75,7 @@ export default function ThreeCard() {
   const backStyle: Animated.WithAnimatedObject<ViewStyle> = {
     transform: [{ rotateY: flipInterpolate }],
     backfaceVisibility: "hidden",
-    position: "absolute", // Ensure the front and back are positioned on top of each other
+    position: "absolute", 
     top: 0,
     left: 0,
     right: 0,
@@ -97,7 +96,7 @@ export default function ThreeCard() {
   return (
     <ImageBackground
       source={{ uri: backgroundImage }}
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }} // Make the background fill the screen
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }} 
     >
       <View style={styles.threeCardWrapper}>
         {Array.from({ length: 3 }).map((_, index) => (

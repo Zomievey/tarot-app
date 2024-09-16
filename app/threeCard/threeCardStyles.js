@@ -1,60 +1,81 @@
-// threeCardStyles.js
 import { StyleSheet, Dimensions } from "react-native";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
   threeContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "#1D1D1D", // Dark gothic background
+    backgroundColor: "#1D1D1D",
+    paddingTop: 20,
   },
   threeCardWrapper: {
-    flexDirection: "row", // Arrange cards in a row
-    justifyContent: "space-around", // Add space between cards
-    alignItems: "center",
-    width: width * 0.95, // Set width to fit three cards across the screen
-    height: 350, // Adjust height based on card height
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    width: width * 0.95,
+    height: height * 0.5,
     marginBottom: 20,
   },
   threeCardContainer: {
-    width: width * 0.3, // Adjust the width to fit three cards across the screen
-    justifyContent: "center",
+    width: width * 0.3,
+    justifyContent: "flex-start",
     alignItems: "center",
     position: "relative",
   },
-  threeCardImage: {
-    width: "100%", // Use full width of the card container
-    height: 200, // Adjust height to maintain the card aspect ratio
-    resizeMode: "contain",
-  },
   threeCardName: {
-    fontSize: 20,
+    fontSize: 18,
     color: "#FFFFFF",
-    textAlign: "center",
-    width: "100%", // Ensure the text takes the full width of the container
-    marginBottom: 20,
-  },
-  threeCardNameBack: {
-    fontSize: 20,
-    color: "#FFFFFF",
-    textAlign: "center",
-    width: "100%",
-    marginBottom: 20,
-    opacity: 0,
-  },
-  threeCardDescription: {
-    fontSize: 16,
-    color: "white",
     textAlign: "center",
     marginTop: 10,
-    width: "100%", // Ensure the text takes the full width of the container
+    width: "100%",
+    fontFamily: "Cinzel-Decorative",
+    marginBottom: 10,
+    flexWrap: "wrap",
+    height: 50,
   },
-  threeCardDescriptionBack: {
-    fontSize: 16,
+  threeCardNameBack: {
+    fontSize: 18,
+    color: "#FFFFFF",
+    textAlign: "center",
+    marginTop: 10,
+    width: "100%",
+    fontFamily: "Cinzel-Decorative",
+    marginBottom: 10,
+    flexWrap: "wrap",
+    height: 50,
+    opacity: 0,
+  },
+  threeCardImage: {
+    width: "100%",
+    height: 180,
+    resizeMode: "contain",
+    marginBottom: 30,
+  },
+  threeCardDescription: {
+    fontSize: 14,
     color: "white",
     textAlign: "center",
+    fontFamily: "serif",
+    flexWrap: "wrap",
+    lineHeight: 18,
+    marginTop: 5,
+    width: "100%",
+    height: 350,
+    overflow: "hidden",
+  },
+  threeCardDescriptionBack: {
+    fontSize: 14,
+    color: "white",
+    textAlign: "center",
+    fontFamily: "serif",
+    flexWrap: "wrap",
+    lineHeight: 18,
+    marginTop: 5,
+    width: "100%",
+    height: 350,
+    overflow: "hidden",
     opacity: 0,
   },
   threeButtonStyle: {
@@ -62,8 +83,8 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
-    alignSelf: "center", // Center the button horizontally
-    marginTop: 175, // Add margin to separate it from the content below
+    alignSelf: "center",
+    marginTop: 75,
   },
   homebuttonStyle: {
     backgroundColor: "#1C152A",

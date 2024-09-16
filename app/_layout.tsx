@@ -5,22 +5,18 @@ import { useFonts } from "expo-font";
 import { useCallback } from "react";
 
 export default function Layout() {
-  // Prevent auto-hide until fonts are loaded
   SplashScreen.preventAutoHideAsync();
 
-  // Load the font
   const [fontsLoaded] = useFonts({
-    "Cinzel-Decorative": require("../assets/fonts/CinzelDecorative-Regular.ttf"), // Adjust the path as necessary
+    "Cinzel-Decorative": require("../assets/fonts/CinzelDecorative-Regular.ttf"),
   });
 
-  // Callback to hide splash screen after fonts are loaded
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
-  // Show loading indicator while fonts are loading
   if (!fontsLoaded) {
     return <ActivityIndicator size="large" color="#A46CFF" />;
   }
@@ -30,20 +26,20 @@ export default function Layout() {
       <Stack
         screenOptions={{
           headerShown: true,
-          title: "", // Remove the path text
+          title: "",
           headerStyle: {
             backgroundColor: "#1C152A",
           },
-          headerTintColor: "#FFFFFF", // Color of the back button
+          headerTintColor: "#FFFFFF",
           headerTitleStyle: {
-            fontWeight: "bold", // Customize the title font weight
-            fontSize: 18, // Customize the title font size
-            fontFamily: "Cinzel-Decorative", // Apply the custom font
+            fontWeight: "bold",
+            fontSize: 18,
+            fontFamily: "Cinzel-Decorative",
           },
-          headerBackTitle: "Back", // Custom text for the back button
+          headerBackTitle: "Back",
           headerBackTitleStyle: {
-            fontSize: 14, // Smaller back button text size
-            fontFamily: "Cinzel-Decorative", // Apply custom font to the back title
+            fontSize: 14,
+            fontFamily: "Cinzel-Decorative",
           },
         }}
       />

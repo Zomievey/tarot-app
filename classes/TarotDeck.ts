@@ -249,7 +249,7 @@ export const tarotDeck = [
     name: "Ace of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ace-wands.jpg" // Static path for web
+        ? "/assets/images/ace-wands.jpg" 
         : Asset.fromModule(require("../assets/images/ace-wands.jpg")).uri,
     description:
       "Inspiration, new beginnings, potential, creative force. This card indicates a surge of creativity and the birth of a new idea or project.",
@@ -260,7 +260,7 @@ export const tarotDeck = [
     name: "Two of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/two-wands.jpg" // Static path for web
+        ? "/assets/images/two-wands.jpg" 
         : Asset.fromModule(require("../assets/images/two-wands.jpg")).uri,
     description:
       "Planning, decision-making, progress. You are in the process of mapping out a plan and setting goals for the future.",
@@ -271,7 +271,7 @@ export const tarotDeck = [
     name: "Three of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/three-wands.jpg" // Static path for web
+        ? "/assets/images/three-wands.jpg" 
         : Asset.fromModule(require("../assets/images/three-wands.jpg")).uri,
     description:
       "Expansion, foresight, progress. You've laid the groundwork, and now you're starting to see the results of your efforts.",
@@ -282,7 +282,7 @@ export const tarotDeck = [
     name: "Four of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/four-wands.jpg" // Static path for web
+        ? "/assets/images/four-wands.jpg"
         : Asset.fromModule(require("../assets/images/four-wands.jpg")).uri,
     description:
       "Celebration, harmony, homecoming. This card signifies joyous events, stability, and a sense of belonging.",
@@ -293,7 +293,7 @@ export const tarotDeck = [
     name: "Five of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/five-wands.jpg" // Static path for web
+        ? "/assets/images/five-wands.jpg" 
         : Asset.fromModule(require("../assets/images/five-wands.jpg")).uri,
     description:
       "Conflict, competition, disagreements. This card often indicates challenges, but they can be productive and help you grow.",
@@ -304,7 +304,7 @@ export const tarotDeck = [
     name: "Six of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/six-wands.jpg" // Static path for web
+        ? "/assets/images/six-wands.jpg" 
         : Asset.fromModule(require("../assets/images/six-wands.jpg")).uri,
     description:
       "Success, recognition, achievement. You've overcome obstacles and are now receiving recognition for your efforts.",
@@ -315,7 +315,7 @@ export const tarotDeck = [
     name: "Seven of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/seven-wands.jpg" // Static path for web
+        ? "/assets/images/seven-wands.jpg" 
         : Asset.fromModule(require("../assets/images/seven-wands.jpg")).uri,
     description:
       "Perseverance, defense, maintaining control. You are standing your ground and defending your position against opposition.",
@@ -326,7 +326,7 @@ export const tarotDeck = [
     name: "Eight of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/eight-wands.jpg" // Static path for web
+        ? "/assets/images/eight-wands.jpg"
         : Asset.fromModule(require("../assets/images/eight-wands.jpg")).uri,
     description:
       "Rapid action, movement, swift progress. Things are happening quickly, and you're moving toward your goals at a fast pace.",
@@ -337,7 +337,7 @@ export const tarotDeck = [
     name: "Nine of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/nine-wands.jpg" // Static path for web
+        ? "/assets/images/nine-wands.jpg" 
         : Asset.fromModule(require("../assets/images/nine-wands.jpg")).uri,
     description:
       "Resilience, courage, persistence. You're facing challenges but have the strength and determination to keep going.",
@@ -348,7 +348,7 @@ export const tarotDeck = [
     name: "Ten of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ten-wands.jpg" // Static path for web
+        ? "/assets/images/ten-wands.jpg" 
         : Asset.fromModule(require("../assets/images/ten-wands.jpg")).uri,
     description:
       "Burden, responsibility, hard work. You may be carrying a heavy load or taking on more than you can handle.",
@@ -359,7 +359,7 @@ export const tarotDeck = [
     name: "Page of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/page-wands.jpg" // Static path for web
+        ? "/assets/images/page-wands.jpg" 
         : Asset.fromModule(require("../assets/images/page-wands.jpg")).uri,
     description:
       "Inspiration, exploration, potential. This card suggests the beginning of a new venture or a message of inspiration.",
@@ -370,7 +370,7 @@ export const tarotDeck = [
     name: "Knight of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/knight-wands.jpg" // Static path for web
+        ? "/assets/images/knight-wands.jpg" 
         : Asset.fromModule(require("../assets/images/knight-wands.jpg")).uri,
     description:
       "Action, adventure, courage. The Knight of Wands is full of energy and ready to take bold action toward their goals.",
@@ -381,7 +381,7 @@ export const tarotDeck = [
     name: "Queen of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/queen-wands.jpg" // Static path for web
+        ? "/assets/images/queen-wands.jpg" 
         : Asset.fromModule(require("../assets/images/queen-wands.jpg")).uri,
     description:
       "Confidence, determination, independence. The Queen embodies passion, courage, and charisma, leading with enthusiasm.",
@@ -392,7 +392,7 @@ export const tarotDeck = [
     name: "King of Wands",
     image:
       Platform.OS === "web"
-        ? "/assets/images/king-wands.jpg" // Static path for web
+        ? "/assets/images/king-wands.jpg" 
         : Asset.fromModule(require("../assets/images/king-wands.jpg")).uri,
     description:
       "Leadership, vision, entrepreneurship. The King represents someone who is mature, inspiring, and a natural leader.",
@@ -403,7 +403,7 @@ export const tarotDeck = [
     name: "Ace of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ace-cups.jpg" // Static path for web
+        ? "/assets/images/ace-cups.jpg" 
         : Asset.fromModule(require("../assets/images/ace-cups.jpg")).uri,
     description:
       "New relationships, emotional awakening, love, compassion. This card signifies the beginning of emotional fulfillment and an outpouring of love and joy.",
@@ -414,7 +414,7 @@ export const tarotDeck = [
     name: "Two of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/two-cups.jpg" // Static path for web
+        ? "/assets/images/two-cups.jpg" 
         : Asset.fromModule(require("../assets/images/two-cups.jpg")).uri,
     description:
       "Partnership, harmony, mutual attraction, connection. This card represents a harmonious relationship, mutual respect, and emotional balance.",
@@ -425,7 +425,7 @@ export const tarotDeck = [
     name: "Three of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/three-cups.jpg" // Static path for web
+        ? "/assets/images/three-cups.jpg" 
         : Asset.fromModule(require("../assets/images/three-cups.jpg")).uri,
     description:
       "Celebration, friendship, joy, community. It signifies gatherings, social events, and a time of happiness shared with others and a sense of belonging.",
@@ -436,7 +436,7 @@ export const tarotDeck = [
     name: "Four of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/four-cups.jpg" // Static path for web
+        ? "/assets/images/four-cups.jpg" 
         : Asset.fromModule(require("../assets/images/four-cups.jpg")).uri,
     description:
       "Contemplation, apathy, reevaluation. This card suggests a period of introspection and the need to focus on what truly matters, often indicating dissatisfaction or boredom.",
@@ -447,7 +447,7 @@ export const tarotDeck = [
     name: "Five of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/five-cups.jpg" // Static path for web
+        ? "/assets/images/five-cups.jpg" 
         : Asset.fromModule(require("../assets/images/five-cups.jpg")).uri,
     description:
       "Loss, regret, disappointment, grief. It represents emotional pain and the challenge of moving on from past hurts or losses.",
@@ -458,7 +458,7 @@ export const tarotDeck = [
     name: "Six of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/six-cups.jpg" // Static path for web
+        ? "/assets/images/six-cups.jpg" 
         : Asset.fromModule(require("../assets/images/six-cups.jpg")).uri,
     description:
       "Nostalgia, memories, innocence, childhood. This card is about revisiting the past, reminiscing, and the joy that comes with innocent, simple pleasures.",
@@ -469,7 +469,7 @@ export const tarotDeck = [
     name: "Seven of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/seven-cups.jpg" // Static path for web
+        ? "/assets/images/seven-cups.jpg" 
         : Asset.fromModule(require("../assets/images/seven-cups.jpg")).uri,
     description:
       "Illusion, temptation, wishful thinking. It represents choices, opportunities, and the need to discern between reality and fantasy.",
@@ -480,7 +480,7 @@ export const tarotDeck = [
     name: "Eight of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/eight-cups.jpg" // Static path for web
+        ? "/assets/images/eight-cups.jpg" 
         : Asset.fromModule(require("../assets/images/eight-cups.jpg")).uri,
     description:
       "Walking away, seeking deeper meaning, letting go. This card signifies a journey of leaving behind what no longer serves you in search of something more fulfilling.",
@@ -491,7 +491,7 @@ export const tarotDeck = [
     name: "Nine of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/nine-cups.jpg" // Static path for web
+        ? "/assets/images/nine-cups.jpg" 
         : Asset.fromModule(require("../assets/images/nine-cups.jpg")).uri,
     description:
       "Contentment, satisfaction, emotional fulfillment. Known as the 'wish card', it represents a sense of personal achievement and happiness.",
@@ -502,7 +502,7 @@ export const tarotDeck = [
     name: "Ten of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ten-cups.jpg" // Static path for web
+        ? "/assets/images/ten-cups.jpg" 
         : Asset.fromModule(require("../assets/images/ten-cups.jpg")).uri,
     description:
       "Harmony, family, happiness, fulfillment. This card represents emotional contentment, lasting happiness in relationships, and a sense of unity.",
@@ -513,7 +513,7 @@ export const tarotDeck = [
     name: "Page of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/page-cups.jpg" // Static path for web
+        ? "/assets/images/page-cups.jpg" 
         : Asset.fromModule(require("../assets/images/page-cups.jpg")).uri,
     description:
       "Creativity, imagination, new feelings, curiosity. The Page of Cups brings messages of new emotional beginnings, creativity, and intuitive insights.",
@@ -524,7 +524,7 @@ export const tarotDeck = [
     name: "Knight of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/knight-cups.jpg" // Static path for web
+        ? "/assets/images/knight-cups.jpg" 
         : Asset.fromModule(require("../assets/images/knight-cups.jpg")).uri,
     description:
       "Romance, charm, idealism, following the heart. The Knight of Cups is a dreamer and a romantic, pursuing emotional or creative goals with passion.",
@@ -535,7 +535,7 @@ export const tarotDeck = [
     name: "Queen of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/queen-cups.jpg" // Static path for web
+        ? "/assets/images/queen-cups.jpg" 
         : Asset.fromModule(require("../assets/images/queen-cups.jpg")).uri,
     description:
       "Compassion, nurturing, intuition, emotional security. The Queen represents a deep connection to emotions and the ability to support others with empathy and care.",
@@ -546,7 +546,7 @@ export const tarotDeck = [
     name: "King of Cups",
     image:
       Platform.OS === "web"
-        ? "/assets/images/king-cups.jpg" // Static path for web
+        ? "/assets/images/king-cups.jpg" 
         : Asset.fromModule(require("../assets/images/king-cups.jpg")).uri,
     description:
       "Emotional balance, control, generosity, wisdom. The King embodies emotional maturity, offering support and understanding while maintaining his own emotional equilibrium.",
@@ -557,7 +557,7 @@ export const tarotDeck = [
     name: "Ace of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ace-swords.jpg" // Static path for web
+        ? "/assets/images/ace-swords.jpg" 
         : Asset.fromModule(require("../assets/images/ace-swords.jpg")).uri,
     description:
       "Breakthrough, clarity, new ideas, mental clarity. This card represents a fresh perspective, a new way of thinking, or a significant intellectual breakthrough.",
@@ -568,7 +568,7 @@ export const tarotDeck = [
     name: "Two of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/two-swords.jpg" // Static path for web
+        ? "/assets/images/two-swords.jpg" 
         : Asset.fromModule(require("../assets/images/two-swords.jpg")).uri,
     description:
       "Indecision, stalemate, difficult choices, denial. This card often indicates a need to make a challenging decision or a situation where you're avoiding facing the truth.",
@@ -579,7 +579,7 @@ export const tarotDeck = [
     name: "Three of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/three-swords.jpg" // Static path for web
+        ? "/assets/images/three-swords.jpg" 
         : Asset.fromModule(require("../assets/images/three-swords.jpg")).uri,
     description:
       "Heartbreak, sorrow, grief, betrayal. A card of emotional pain, it often signals heartbreak, separation, or deep disappointment.",
@@ -590,7 +590,7 @@ export const tarotDeck = [
     name: "Four of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/four-swords.jpg" // Static path for web
+        ? "/assets/images/four-swords.jpg" 
         : Asset.fromModule(require("../assets/images/four-swords.jpg")).uri,
     description:
       "Rest, recuperation, contemplation, solitude. This card suggests a time for rest, meditation, and recovery after a period of stress or conflict.",
@@ -601,7 +601,7 @@ export const tarotDeck = [
     name: "Five of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/five-swords.jpg" // Static path for web
+        ? "/assets/images/five-swords.jpg" 
         : Asset.fromModule(require("../assets/images/five-swords.jpg")).uri,
     description:
       "Conflict, defeat, betrayal, loss. This card represents disputes, arguments, or a sense of hollow victory where winning comes at a cost. Feeling defeated.",
@@ -612,7 +612,7 @@ export const tarotDeck = [
     name: "Six of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/six-swords.jpg" // Static path for web
+        ? "/assets/images/six-swords.jpg" 
         : Asset.fromModule(require("../assets/images/six-swords.jpg")).uri,
     description:
       "Transition, moving on, leaving behind. This card signifies a journey towards healing, leaving difficulties behind, and moving towards a calmer state of mind.",
@@ -623,7 +623,7 @@ export const tarotDeck = [
     name: "Seven of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/seven-swords.jpg" // Static path for web
+        ? "/assets/images/seven-swords.jpg" 
         : Asset.fromModule(require("../assets/images/seven-swords.jpg")).uri,
     description:
       "Deception, trickery, strategy, betrayal. This card often points to dishonesty, whether it's being cunning or being deceived by someone else.",
@@ -634,7 +634,7 @@ export const tarotDeck = [
     name: "Eight of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/eight-swords.jpg" // Static path for web
+        ? "/assets/images/eight-swords.jpg" 
         : Asset.fromModule(require("../assets/images/eight-swords.jpg")).uri,
     description:
       "Isolation, restriction, self-imposed prison. This card represents feeling trapped, powerless, or restricted by your own thoughts or circumstances.",
@@ -645,7 +645,7 @@ export const tarotDeck = [
     name: "Nine of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/nine-swords.jpg" // Static path for web
+        ? "/assets/images/nine-swords.jpg" 
         : Asset.fromModule(require("../assets/images/nine-swords.jpg")).uri,
     description:
       "Anxiety, worry, fear, nightmares. This card signifies mental anguish, worry, and fear, or guilt that keeps you up at night, often more imagined than real.",
@@ -656,7 +656,7 @@ export const tarotDeck = [
     name: "Ten of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ten-swords.jpg" // Static path for web
+        ? "/assets/images/ten-swords.jpg" 
         : Asset.fromModule(require("../assets/images/ten-swords.jpg")).uri,
     description:
       "Painful ending, betrayal, crisis, rock bottom. This card signifies a dramatic ending or a situation where things cannot get worse, signaling a need for acceptance and closure.",
@@ -667,7 +667,7 @@ export const tarotDeck = [
     name: "Page of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/page-swords.jpg" // Static path for web
+        ? "/assets/images/page-swords.jpg" 
         : Asset.fromModule(require("../assets/images/page-swords.jpg")).uri,
     description:
       "Curiosity, new ideas, mental energy, communication. The Page brings news of new intellectual pursuits or a fresh perspective.",
@@ -678,7 +678,7 @@ export const tarotDeck = [
     name: "Knight of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/knight-swords.jpg" // Static path for web
+        ? "/assets/images/knight-swords.jpg" 
         : Asset.fromModule(require("../assets/images/knight-swords.jpg")).uri,
     description:
       "Ambition, aggression, speed, directness. The Knight charges forward with determination, often representing a need for swift action or decisiveness.",
@@ -689,7 +689,7 @@ export const tarotDeck = [
     name: "Queen of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/queen-swords.jpg" // Static path for web
+        ? "/assets/images/queen-swords.jpg" 
         : Asset.fromModule(require("../assets/images/queen-swords.jpg")).uri,
     description:
       "Perceptive, independent, clear-minded, unbiased. The Queen represents clarity of thought, the ability to cut through deception, and making decisions based on logic.",
@@ -700,7 +700,7 @@ export const tarotDeck = [
     name: "King of Swords",
     image:
       Platform.OS === "web"
-        ? "/assets/images/king-swords.jpg" // Static path for web
+        ? "/assets/images/king-swords.jpg" 
         : Asset.fromModule(require("../assets/images/king-swords.jpg")).uri,
     description:
       "Intellectual power, authority, truth, discipline. The King symbolizes mastery of the mind, fairness, and the use of intellect to lead and make decisions.",
@@ -711,7 +711,7 @@ export const tarotDeck = [
     name: "Ace of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ace-pents.jpg" // Static path for web
+        ? "/assets/images/ace-pents.jpg" 
         : Asset.fromModule(require("../assets/images/ace-pents.jpg")).uri,
     description:
       "New financial opportunity, prosperity, abundance. This card symbolizes the beginning of a new venture, career, or opportunity that can lead to material or financial gain.",
@@ -722,7 +722,7 @@ export const tarotDeck = [
     name: "Two of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/two-pents.jpg" // Static path for web
+        ? "/assets/images/two-pents.jpg" 
         : Asset.fromModule(require("../assets/images/two-pents.jpg")).uri,
     description:
       "Balance, adaptability, time management, juggling resources. This card suggests the need to balance multiple aspects of life, such as work and personal responsibilities.",
@@ -733,7 +733,7 @@ export const tarotDeck = [
     name: "Three of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/three-pents.jpg" // Static path for web
+        ? "/assets/images/three-pents.jpg" 
         : Asset.fromModule(require("../assets/images/three-pents.jpg")).uri,
     description:
       "Teamwork, collaboration, learning, skill development. This card represents the power of working together towards a common goal and the rewards of cooperation and skill mastery.",
@@ -744,7 +744,7 @@ export const tarotDeck = [
     name: "Four of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/four-pents.jpg" // Static path for web
+        ? "/assets/images/four-pents.jpg" 
         : Asset.fromModule(require("../assets/images/four-pents.jpg")).uri,
     description:
       "Security, stability, holding on to resources, control. This card often indicates a need to be cautious with resources, focusing on saving, or guarding what you have.",
@@ -755,7 +755,7 @@ export const tarotDeck = [
     name: "Five of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/five-pents.jpg" // Static path for web
+        ? "/assets/images/five-pents.jpg" 
         : Asset.fromModule(require("../assets/images/five-pents.jpg")).uri,
     description:
       "Financial loss, poverty, insecurity, isolation. This card often signals a period of hardship, whether it be financial difficulties, health issues, or a sense of being left out in the cold.",
@@ -766,7 +766,7 @@ export const tarotDeck = [
     name: "Six of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/six-pents.jpg" // Static path for web
+        ? "/assets/images/six-pents.jpg" 
         : Asset.fromModule(require("../assets/images/six-pents.jpg")).uri,
     description:
       "Generosity, charity, giving and receiving, sharing wealth. This card represents the balance of giving and receiving and the importance of sharing resources or help with others.",
@@ -777,7 +777,7 @@ export const tarotDeck = [
     name: "Seven of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/seven-pents.jpg" // Static path for web
+        ? "/assets/images/seven-pents.jpg" 
         : Asset.fromModule(require("../assets/images/seven-pents.jpg")).uri,
     description:
       "Patience, hard work, delayed success, investment. This card suggests that your efforts and hard work are starting to pay off, but patience is needed for the full rewards to manifest.",
@@ -788,7 +788,7 @@ export const tarotDeck = [
     name: "Eight of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/eight-pents.jpg" // Static path for web
+        ? "/assets/images/eight-pents.jpg" 
         : Asset.fromModule(require("../assets/images/eight-pents.jpg")).uri,
     description:
       "Skill development, apprenticeship, dedication, mastery. This card signifies hard work, learning new skills, and striving for mastery in a craft or profession.",
@@ -799,7 +799,7 @@ export const tarotDeck = [
     name: "Nine of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/nine-pents.jpg" // Static path for web
+        ? "/assets/images/nine-pents.jpg" 
         : Asset.fromModule(require("../assets/images/nine-pents.jpg")).uri,
     description:
       "Abundance, luxury, self-sufficiency, financial independence. This card represents the enjoyment of the fruits of your labor, financial independence, and personal success.",
@@ -810,7 +810,7 @@ export const tarotDeck = [
     name: "Ten of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/ten-pents.jpg" // Static path for web
+        ? "/assets/images/ten-pents.jpg" 
         : Asset.fromModule(require("../assets/images/ten-pents.jpg")).uri,
     description:
       "Wealth, inheritance, family legacy, long-term success. This card signifies financial stability, family legacy, and the culmination of efforts resulting in lasting security.",
@@ -821,7 +821,7 @@ export const tarotDeck = [
     name: "Page of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/page-pents.jpg" // Static path for web
+        ? "/assets/images/page-pents.jpg" 
         : Asset.fromModule(require("../assets/images/page-pents.jpg")).uri,
     description:
       "Ambition, desire, new venture, opportunity. The Page indicates the beginning of a new financial or educational endeavor and represents curiosity and the willingness to learn.",
@@ -832,7 +832,7 @@ export const tarotDeck = [
     name: "Knight of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/knight-pents.jpg" // Static path for web
+        ? "/assets/images/knight-pents.jpg" 
         : Asset.fromModule(require("../assets/images/knight-pents.jpg")).uri,
     description:
       "Hard work, responsibility, productivity, routine. The Knight represents a diligent and responsible approach to achieving goals, emphasizing persistence and dedication.",
@@ -843,7 +843,7 @@ export const tarotDeck = [
     name: "Queen of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/queen-pents.jpg" // Static path for web
+        ? "/assets/images/queen-pents.jpg" 
         : Asset.fromModule(require("../assets/images/queen-pents.jpg")).uri,
     description:
       "Nurturing, practicality, financial security, resourcefulness. The Queen embodies the nurturing, practical aspect of wealth and material comfort, focusing on providing for and supporting others.",
@@ -854,7 +854,7 @@ export const tarotDeck = [
     name: "King of Pentacles",
     image:
       Platform.OS === "web"
-        ? "/assets/images/king-pents.jpg" // Static path for web
+        ? "/assets/images/king-pents.jpg"
         : Asset.fromModule(require("../assets/images/king-pents.jpg")).uri,
     description:
       "Wealth, business acumen, discipline, power. The King signifies mastery over the material world, success in business, and a disciplined approach to managing resources.",

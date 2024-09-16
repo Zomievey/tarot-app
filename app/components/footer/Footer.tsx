@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import styles from './FooterStyles';
 
 export default function Footer(){
-  const currentYear = new Date().getFullYear(); // Get the current year
+  const currentYear = new Date().getFullYear();
 
   return (
     <View style={styles.footerContainer}>

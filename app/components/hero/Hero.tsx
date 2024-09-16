@@ -38,16 +38,16 @@ export default function Hero() {
       "Cinzel-Decorative": require("../../../assets/fonts/CinzelDecorative-Regular.ttf"),
     });
     setFontsLoaded(true);
-    SplashScreen.hideAsync(); // Hide the splash screen after fonts are loaded
+    SplashScreen.hideAsync();
   };
 
   useEffect(() => {
-    SplashScreen.preventAutoHideAsync(); // Keep splash screen visible until fonts load
+    SplashScreen.preventAutoHideAsync();
     loadFonts();
   }, []);
 
   if (!fontsLoaded) {
-    return null; // Render nothing while the fonts are loading
+    return null;
   }
 
   const getRandomPosition = (maxWidth: number, maxHeight: number) => ({
@@ -67,7 +67,6 @@ export default function Hero() {
           ]}
         />
       ))}
-      {/* Apply custom gothic font to the title */}
       <Text style={[styles.title, { fontFamily: "Cinzel-Decorative" }]}>
         Single Card Reading
       </Text>

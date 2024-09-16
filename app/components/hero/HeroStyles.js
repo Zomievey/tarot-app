@@ -5,15 +5,15 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1D1D1D", // Dark gothic background
+    backgroundColor: "#1D1D1D", 
   },
   titleContainer: {
-    position: "relative", // Needed for sparkles to overlay on text
+    position: "relative", 
   },
   title: {
     fontSize: 36,
     fontFamily: 'CinzelDecorative',
-    color: "white", // Purple for that gothic vibe
+    color: "white", 
     textAlign: "center",
     marginTop: 30,
     marginBottom: 50,
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: "white", // White sparkles
-    opacity: 0, // Start with hidden sparkles
+    backgroundColor: "white", 
+    opacity: 0, 
   },
 });

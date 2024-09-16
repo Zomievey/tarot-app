@@ -7,7 +7,7 @@ import {
   Platform,
   Pressable,
   Image,
-  ImageBackground, // Import ImageBackground
+  ImageBackground,
 } from "react-native";
 import { Asset } from "expo-asset";
 import { tarotDeck } from "@/classes/TarotDeck";
@@ -17,7 +17,7 @@ type TarotCard = {
   name: string;
   image: any;
   description: string;
-  reversedDescription: string; // Add reversedDescription type
+  reversedDescription: string; 
 };
 
 export default function SingleCard() {
@@ -28,7 +28,7 @@ export default function SingleCard() {
 
   const setFlipped = (value: boolean) => {};
   const [isHovered, setIsHovered] = useState(false);
-  const [flipAnim] = useState(new Animated.Value(0)); // Animation value for flip
+  const [flipAnim] = useState(new Animated.Value(0)); 
   const cardBack =
     Platform.OS === "web"
       ? "/assets/images/back-card.png"
@@ -43,7 +43,7 @@ export default function SingleCard() {
   const drawCard = () => {
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
 
-    // Randomly decide if the card is reversed (50% chance)
+   
     const isReversed = Math.random() < 0.5;
 
     setCard({
@@ -52,28 +52,27 @@ export default function SingleCard() {
         reversedDescription: randomCard.reversedDescription ?? "",
       },
       isReversed,
-    }); // Set the selected card and its orientation
+    });
 
-    setFlipped(false); // Reset the flip state
-    flipAnim.setValue(0); // Reset animation
-
-    // Start the flip animation
+    setFlipped(false); 
+    flipAnim.setValue(0); 
+   
     Animated.timing(flipAnim, {
       toValue: 1,
       duration: 800,
-      useNativeDriver: Platform.OS !== "web", // Disable native driver on web
+      useNativeDriver: Platform.OS !== "web",
     }).start(() => {
-      setFlipped(true); // After the animation, show the front of the card
+      setFlipped(true);
     });
   };
 
-  // Create flip animation
+
   const flipInterpolate = flipAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ["0deg", "180deg"],
   });
 
-  // Create reverse flip for the back side
+
   const flipBackInterpolate = flipAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ["180deg", "360deg"],
@@ -82,7 +81,7 @@ export default function SingleCard() {
   const backStyle: Animated.WithAnimatedObject<ViewStyle> = {
     transform: [{ rotateY: flipInterpolate }],
     backfaceVisibility: "hidden",
-    position: "absolute", // Ensure the front and back are positioned on top of each other
+    position: "absolute", 
     top: 0,
     left: 0,
     right: 0,
@@ -103,14 +102,12 @@ export default function SingleCard() {
     <ImageBackground source={{ uri: backgroundImage }} style={styles.container}>
  
       <View style={styles.cardWrapper}>
-        {/* Back of the card */}
         <Animated.View style={backStyle}>
           <Text style={styles.cardNameBack}>Placeholder</Text>
           <Image source={{ uri: cardBack }} style={styles.cardImage} />
           <Text style={styles.cardDescriptionBack}>Placeholder</Text>
         </Animated.View>
 
-        {/* Front of the card */}
         <Animated.View style={frontStyle}>
           {card.card ? (
             <>
@@ -119,7 +116,6 @@ export default function SingleCard() {
               >
                 {card.card.name}
               </Text>
-              {/* Rotate the image if the card is reversed */}
               <Animated.Image
                 source={{ uri: card.card.image }}
                 style={[
@@ -131,7 +127,6 @@ export default function SingleCard() {
                   },
                 ]}
               />
-              {/* Show reversed description if the card is reversed */}
               <Text style={styles.cardDescription}>
                 {card.isReversed
                   ? card.card.reversedDescription
@@ -148,10 +143,10 @@ export default function SingleCard() {
 
       <Pressable
         onPress={drawCard}
-        onPressIn={() => setIsHovered(true)} // For mobile press effect
-        onPressOut={() => setIsHovered(false)} // For mobile press effect
-        onHoverIn={() => setIsHovered(true)} // For web hover effect
-        onHoverOut={() => setIsHovered(false)} // For web hover effect
+        onPressIn={() => setIsHovered(true)}
+        onPressOut={() => setIsHovered(false)}
+        onHoverIn={() => setIsHovered(true)}
+        onHoverOut={() => setIsHovered(false)}
         style={[styles.buttonStyle, isHovered && styles.buttonHover]}
       >
         <Text style={styles.buttonText}>SELECT A CARD</Text>
