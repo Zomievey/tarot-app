@@ -1,19 +1,25 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+
+const isTabletOrWeb = Platform.OS === 'web' || (Platform.OS === 'ios' && height / width < 1.6);
+
+const scaleFactor = isTabletOrWeb ? 1.5 : 1;
 
 export default StyleSheet.create({
   footerContainer: {
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
-    opacity: 0.5, // Make it semi-transparent
-    backgroundColor: "#1C152A", // Match the app's gothic background
-    position: "absolute", // Make sure it sticks to the bottom
+    padding: 10 * scaleFactor,
+    opacity: 0.5,
+    backgroundColor: "#1C152A",
+    position: "absolute",
     bottom: 0,
     width: "100%",
   },
   footerText: {
-    color: "white", // Gothic purple color
-    fontSize: 12,
+    color: "white",
+    fontSize: 12 * scaleFactor,
     textAlign: "center",
   },
 });

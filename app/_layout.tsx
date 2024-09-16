@@ -1,6 +1,6 @@
 import { SplashScreen, Stack } from "expo-router";
 import Footer from "./components/footer/Footer";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, View, Dimensions, Platform } from "react-native";
 import { useFonts } from "expo-font";
 import { useCallback } from "react";
 
@@ -17,8 +17,17 @@ export default function Layout() {
     }
   }, [fontsLoaded]);
 
+  // Determine if the device is an iPad or web platform
+  const { width, height } = Dimensions.get("window");
+  const isTabletOrWeb =
+    Platform.OS === "web" || (Platform.OS === "ios" && height / width < 1.6);
+
+  // Define scaling factors for tablet/web
+  const headerFontSize = isTabletOrWeb ? 28 : 18;
+  const backTitleFontSize = isTabletOrWeb ? 20 : 14;
+
   if (!fontsLoaded) {
-    return <ActivityIndicator size="large" color="#A46CFF" />;
+    return <ActivityIndicator size='large' color='#A46CFF' />;
   }
 
   return (
@@ -33,12 +42,12 @@ export default function Layout() {
           headerTintColor: "#FFFFFF",
           headerTitleStyle: {
             fontWeight: "bold",
-            fontSize: 18,
+            fontSize: headerFontSize,
             fontFamily: "Cinzel-Decorative",
           },
           headerBackTitle: "Back",
           headerBackTitleStyle: {
-            fontSize: 14,
+            fontSize: backTitleFontSize,
             fontFamily: "Cinzel-Decorative",
           },
         }}

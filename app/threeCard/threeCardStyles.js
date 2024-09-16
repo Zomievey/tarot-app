@@ -1,6 +1,12 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const { width, height } = Dimensions.get("window");
+
+// Determine if the device is an iPad or a web platform
+const isTabletOrWeb = Platform.OS === 'web' || (Platform.OS === 'ios' && height / width < 1.6); // Approximate aspect ratio for iPads
+
+// Define scaling factors for tablet/web
+const scaleFactor = isTabletOrWeb ? 1.5 : 1; // Increase sizes by 1.5 times for iPad and web
 
 export default StyleSheet.create({
   threeContainer: {
@@ -8,97 +14,97 @@ export default StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#1D1D1D",
-    paddingTop: 20,
+    paddingTop: 20 * scaleFactor,
   },
   threeCardWrapper: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "flex-start",
     width: width * 0.95,
-    height: height * 0.5,
-    marginBottom: 20,
+    height: height * (isTabletOrWeb ? 0.6 : 0.5), // More height for larger screens
+    marginBottom: 20 * scaleFactor,
   },
   threeCardContainer: {
-    width: width * 0.3,
+    width: width * (isTabletOrWeb ? 0.25 : 0.3), // Adjust the width based on the screen size
     justifyContent: "flex-start",
     alignItems: "center",
     position: "relative",
   },
   threeCardName: {
-    fontSize: 18,
+    fontSize: 18 * scaleFactor,
     color: "#FFFFFF",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 10 * scaleFactor,
     width: "100%",
     fontFamily: "Cinzel-Decorative",
-    marginBottom: 10,
+    marginBottom: 10 * scaleFactor,
     flexWrap: "wrap",
-    height: 50,
+    height: 50 * scaleFactor,
   },
   threeCardNameBack: {
-    fontSize: 18,
+    fontSize: 18 * scaleFactor,
     color: "#FFFFFF",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 10 * scaleFactor,
     width: "100%",
     fontFamily: "Cinzel-Decorative",
-    marginBottom: 10,
+    marginBottom: 10 * scaleFactor,
     flexWrap: "wrap",
-    height: 50,
+    height: 50 * scaleFactor,
     opacity: 0,
   },
   threeCardImage: {
     width: "100%",
-    height: 180,
+    height: 180 * scaleFactor,
     resizeMode: "contain",
-    marginBottom: 30,
+    marginBottom: 30 * scaleFactor,
   },
   threeCardDescription: {
-    fontSize: 14,
+    fontSize: 14 * scaleFactor,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
     flexWrap: "wrap",
-    lineHeight: 18,
-    marginTop: 5,
+    lineHeight: 18 * scaleFactor,
+    marginTop: 5 * scaleFactor,
     width: "100%",
-    height: 350,
+    height: 350 * scaleFactor,
     overflow: "hidden",
   },
   threeCardDescriptionBack: {
-    fontSize: 14,
+    fontSize: 14 * scaleFactor,
     color: "white",
     textAlign: "center",
     fontFamily: "serif",
     flexWrap: "wrap",
-    lineHeight: 18,
-    marginTop: 5,
+    lineHeight: 18 * scaleFactor,
+    marginTop: 5 * scaleFactor,
     width: "100%",
-    height: 350,
+    height: 350 * scaleFactor,
     overflow: "hidden",
     opacity: 0,
   },
   threeButtonStyle: {
     backgroundColor: "#1C152A",
-    padding: 10,
-    borderRadius: 10,
+    padding: 10 * scaleFactor,
+    borderRadius: 10 * scaleFactor,
     alignItems: "center",
     alignSelf: "center",
-    marginTop: 75,
+    marginTop: 75 * scaleFactor,
   },
   homebuttonStyle: {
     backgroundColor: "#1C152A",
-    padding: 10,
-    borderRadius: 10,
+    padding: 10 * scaleFactor,
+    borderRadius: 10 * scaleFactor,
     alignItems: "center",
-    margin: 10,
+    margin: 10 * scaleFactor,
   },
   buttonHover: {
     backgroundColor: "#9543E8",
   },
   buttonText: {
     color: "white",
-    fontSize: 16,
+    fontSize: 16 * scaleFactor,
     marginHorizontal: 1,
     marginVertical: 1,
     fontFamily: "Cinzel-Decorative",
