@@ -3,7 +3,6 @@ import {
   View,
   Text,
   Animated,
-  ViewStyle,
   Platform,
   Pressable,
   Image,
@@ -11,13 +10,13 @@ import {
 } from "react-native";
 import { Asset } from "expo-asset";
 import { tarotDeck } from "@/classes/TarotDeck";
-import styles from "../styles.js";
+import styles from "./singleCardStyles";
 
 type TarotCard = {
   name: string;
   image: any;
   description: string;
-  reversedDescription: string; 
+  reversedDescription: string;
 };
 
 export default function SingleCard() {
@@ -26,9 +25,9 @@ export default function SingleCard() {
     isReversed: boolean;
   }>({ card: null, isReversed: false });
 
-  const setFlipped = (value: boolean) => {};
-  const [isHovered, setIsHovered] = useState(false);
-  const [flipAnim] = useState(new Animated.Value(0)); 
+  const [flipAnim] = useState(new Animated.Value(0)); // Flip animation
+  const [textAnim] = useState(new Animated.Value(0)); // Text fade-in animation
+
   const cardBack =
     Platform.OS === "web"
       ? "/assets/images/back-card.png"
@@ -37,13 +36,10 @@ export default function SingleCard() {
   const backgroundImage =
     Platform.OS === "web"
       ? "/assets/images/main-background.png"
-      : Asset.fromModule(require("../../assets/images/main-background.png"))
-          .uri;
+      : Asset.fromModule(require("../../assets/images/main-background.png")).uri;
 
   const drawCard = () => {
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
-
-   
     const isReversed = Math.random() < 0.5;
 
     setCard({
@@ -54,101 +50,119 @@ export default function SingleCard() {
       isReversed,
     });
 
-    setFlipped(false); 
-    flipAnim.setValue(0); 
-   
+    // Reset animations
+    flipAnim.setValue(0);
+    textAnim.setValue(0);
+
+    // Animate the flip
     Animated.timing(flipAnim, {
       toValue: 1,
       duration: 800,
-      useNativeDriver: Platform.OS !== "web",
+      useNativeDriver: true,
     }).start(() => {
-      setFlipped(true);
+      // Animate text fade-in after flip
+      Animated.timing(textAnim, {
+        toValue: 1,
+        duration: 400,
+        useNativeDriver: true,
+      }).start();
     });
   };
 
-
+  // Flip animation for the card image
   const flipInterpolate = flipAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ["0deg", "180deg"],
+    outputRange: ["180deg", "360deg"], // Start at 180deg to show mirrored image initially
   });
 
-
-  const flipBackInterpolate = flipAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ["180deg", "360deg"],
+  // Control opacity to ensure one side is visible at a time
+  const frontOpacity = flipAnim.interpolate({
+    inputRange: [0, 0.4, 1], // Adjust the input range to fade in faster
+    outputRange: [0, 0, 1], // Initially hidden, becomes visible after flip
   });
 
-  const backStyle: Animated.WithAnimatedObject<ViewStyle> = {
-    transform: [{ rotateY: flipInterpolate }],
-    backfaceVisibility: "hidden",
-    position: "absolute", 
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  };
-
-  const frontStyle: Animated.WithAnimatedObject<ViewStyle> = {
-    transform: [{ rotateY: flipBackInterpolate }],
-    backfaceVisibility: "hidden",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  };
+  const backOpacity = flipAnim.interpolate({
+    inputRange: [0, 0.5, 1],
+    outputRange: [1, 0, 0], // Initially visible, becomes hidden after flip
+  });
 
   return (
     <ImageBackground source={{ uri: backgroundImage }} style={styles.container}>
- 
       <View style={styles.cardWrapper}>
-        <Animated.View style={backStyle}>
-          <Text style={styles.cardNameBack}>Placeholder</Text>
+        {/* Card Back Image */}
+        <Animated.View
+          style={[
+            styles.cardImageWrapper,
+            {
+              opacity: backOpacity,
+              transform: [{ rotateY: flipInterpolate }],
+            },
+          ]}
+        >
           <Image source={{ uri: cardBack }} style={styles.cardImage} />
-          <Text style={styles.cardDescriptionBack}>Placeholder</Text>
         </Animated.View>
 
-        <Animated.View style={frontStyle}>
-          {card.card ? (
-            <>
-              <Text
-                style={[styles.cardName, { fontFamily: "Cinzel-Decorative" }]}
-              >
-                {card.card.name}
-              </Text>
-              <Animated.Image
-                source={{ uri: card.card.image }}
-                style={[
-                  styles.cardImage,
-                  {
-                    transform: [
-                      { rotate: card.isReversed ? "180deg" : "0deg" },
-                    ],
-                  },
-                ]}
-              />
-              <Text style={styles.cardDescription}>
-                {card.isReversed
-                  ? card.card.reversedDescription
-                  : card.card.description}
-              </Text>
-            </>
-          ) : (
-            <Text style={styles.welcome}>
-              Tap the button to draw a tarot card
-            </Text>
+        {/* Card Front Image */}
+        <Animated.View
+          style={[
+            styles.cardImageWrapper,
+            {
+              opacity: frontOpacity,
+              transform: [{ rotateY: flipInterpolate }],
+              position: 'absolute', // Ensure the front card is stacked on top
+            },
+          ]}
+        >
+          {card.card && ( // Ensure this block renders only if a card is drawn
+            <Animated.Image
+              source={{ uri: card.card.image }}
+              style={[
+                styles.cardImage,
+                {
+                  transform: [
+                    { rotate: card.isReversed ? "180deg" : "0deg" },
+                    { scaleX: flipAnim.interpolate({ // Mirror the image initially
+                        inputRange: [0, 0.5, 1],
+                        outputRange: [-1, -1, 1] // Starts mirrored, ends normal
+                    }) }
+                  ],
+                },
+              ]}
+            />
           )}
         </Animated.View>
       </View>
 
-      <Pressable
-        onPress={drawCard}
-        onPressIn={() => setIsHovered(true)}
-        onPressOut={() => setIsHovered(false)}
-        onHoverIn={() => setIsHovered(true)}
-        onHoverOut={() => setIsHovered(false)}
-        style={[styles.buttonStyle, isHovered && styles.buttonHover]}
-      >
+      {/* Card Title and Description */}
+      {card.card && (
+        <Animated.View
+          style={[
+            styles.descriptionWrapper,
+            {
+              opacity: textAnim, // Fade in the text
+              transform: [
+                {
+                  translateY: textAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [20, 0], // Slide in effect
+                  }),
+                },
+              ],
+            },
+          ]}
+        >
+          <Text style={[styles.cardName, { fontFamily: "Cinzel-Decorative" }]}>
+            {card.card.name}
+          </Text>
+          <Text style={[styles.cardDescription, { fontFamily: "Monsteratt-Variable" }]}>
+            {card.isReversed
+              ? card.card.reversedDescription
+              : card.card.description}
+          </Text>
+        </Animated.View>
+      )}
+
+      <Pressable onPress={drawCard} style={styles.buttonStyle}>
         <Text style={styles.buttonText}>SELECT A CARD</Text>
       </Pressable>
     </ImageBackground>

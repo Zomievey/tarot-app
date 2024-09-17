@@ -9,6 +9,8 @@ export default function Layout() {
 
   const [fontsLoaded] = useFonts({
     "Cinzel-Decorative": require("../assets/fonts/CinzelDecorative-Regular.ttf"),
+    "Montserrat-Variable": require("../assets/fonts/Montserrat-VariableFont_wght.ttf"),
+    "Space-Mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
