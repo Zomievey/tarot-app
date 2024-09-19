@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Pressable, ImageBackground, Platform } from "react-native";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { FontAwesome } from "@expo/vector-icons";
 import styles from "./styles";
 import { Asset } from "expo-asset";
 
@@ -16,44 +17,38 @@ export default function Index() {
 
   return (
     <ImageBackground source={{ uri: backgroundImage }} style={styles.container}>
-      <View style={styles.container}>
-        <Text style={[styles.title, { fontFamily: titleFont }]}>
-          Pocket Tarot
-        </Text>
-        <Pressable
-          onPress={() => {
-            router.push("/singleCard");
-          }}
-          style={({ pressed }) => [
-            styles.homebuttonStyle,
-            pressed && styles.buttonHover,
-          ]}
-        >
-          <Text style={styles.buttonText}>SINGLE CARD READING</Text>
-        </Pressable>
+      {/* Wrapper for title and buttons with semi-transparent background */}
+      <View style={styles.overlayContainer}>
+        <View style={styles.overlay}>
+          <Text style={[styles.title, { fontFamily: titleFont }]}>
+            Pocket Tarot
+          </Text>
 
-        <Pressable
-          onPress={() => {
-            router.push("/threeCard");
-          }}
-          style={({ pressed }) => [
-            styles.homebuttonStyle,
-            pressed && styles.buttonHover,
-          ]}
-        >
-          <Text style={styles.buttonText}>THREE CARD READING</Text>
-        </Pressable>
-        {/* <Pressable
-          onPress={() => {
-            router.push("/fiveCard"); 
-          }}
-          style={({ pressed }) => [
-            styles.homebuttonStyle,
-            pressed && styles.buttonHover,
-          ]}
-        >
-          <Text style={styles.buttonText}>FIVE CARD READING</Text>
-        </Pressable> */}
+          <Link style={styles.linkText} href='/singleCard'>
+            <FontAwesome name='star-o' size={20} color='white' />
+            {" "}
+            <Text> SINGLE CARD READING</Text>
+          </Link>
+
+          <Link style={styles.linkText} href='/threeCard'>
+            <FontAwesome name='star-o' size={20} color='white' />
+            {" "}
+            <Text> THREE CARD READING</Text>
+          </Link>
+
+          {/* Uncomment this section for five-card reading */}
+          {/* <Pressable
+            onPress={() => {
+              router.push("/fiveCard"); 
+            }}
+            style={({ pressed }) => [
+              styles.homebuttonStyle,
+              pressed && styles.buttonHover,
+            ]}
+          >
+            <Text style={styles.buttonText}>FIVE CARD READING</Text>
+          </Pressable> */}
+        </View>
       </View>
     </ImageBackground>
   );

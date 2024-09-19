@@ -14,6 +14,18 @@ export default StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10 * scaleFactor,
   },
+  // New overlay styles
+  overlayContainer: {
+    width: "80%", // Adjust width as needed
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  overlay: {
+    backgroundColor: "#1C152AB2", // Semi-transparent 
+    borderRadius: 20,
+    padding: 40 * scaleFactor,
+    alignItems: "center",
+  },
   title: {
     fontSize: 44 * scaleFactor,
     color: "white",
@@ -22,14 +34,14 @@ export default StyleSheet.create({
   },
   subtitle: {
     fontSize: 26 * scaleFactor,
-    color: "white",
+    color: "black",
     fontFamily: "serif",
     textAlign: "center",
     marginBottom: 30 * scaleFactor,
   },
   welcome: {
     fontSize: 18 * scaleFactor,
-    color: "#FFFFFF",
+    color: "black",
     fontFamily: "serif",
     textAlign: "center",
     marginBottom: 15 * scaleFactor,
@@ -41,14 +53,16 @@ export default StyleSheet.create({
     alignItems: "center",
     margin: 10 * scaleFactor,
   },
-  buttonHover: {
-    backgroundColor: "#9543E8",
+  underline: {
+    textDecorationLine: 'underline',
   },
-  buttonText: {
+  buttonHover: {
+    backgroundColor: "#A17BDC",
+  },
+  linkText: {
     color: "white",
-    fontSize: 16 * scaleFactor,
-    marginHorizontal: 1 * scaleFactor,
-    marginVertical: 1 * scaleFactor,
+    fontSize: 18 * scaleFactor,
     fontFamily: "Cinzel-Decorative",
+    marginVertical: 10 * scaleFactor,
   },
 });
