@@ -21,7 +21,7 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   overlay: {
-    backgroundColor: "#1C152AB2", // Semi-transparent 
+    backgroundColor: "#1C152AB2", // Semi-transparent
     borderRadius: 20,
     padding: 40 * scaleFactor,
     alignItems: "center",
@@ -33,36 +33,41 @@ export default StyleSheet.create({
     marginBottom: 15 * scaleFactor,
   },
   subtitle: {
-    fontSize: 26 * scaleFactor,
-    color: "black",
-    fontFamily: "serif",
+    fontSize: 20 * scaleFactor,
+    color: "white",
+    fontFamily: "Cinzel-Decorative",
     textAlign: "center",
     marginBottom: 30 * scaleFactor,
   },
   welcome: {
-    fontSize: 18 * scaleFactor,
-    color: "black",
-    fontFamily: "serif",
+    fontSize: 20 * scaleFactor,
+    color: "white",
+    fontFamily: "Cinzel-Decorative",
     textAlign: "center",
     marginBottom: 15 * scaleFactor,
   },
-  homebuttonStyle: {
+  homeButton: {
     backgroundColor: "#1C152A",
     padding: 10 * scaleFactor,
     borderRadius: 10 * scaleFactor,
     alignItems: "center",
     margin: 10 * scaleFactor,
   },
-  underline: {
-    textDecorationLine: 'underline',
+  homeButtonText: {
+    color: "white",
+    fontSize: 18 * scaleFactor,
+    fontFamily: "serif",
   },
-  buttonHover: {
-    backgroundColor: "#A17BDC",
+  homeButtonHover: {
+    backgroundColor: "#A17BDC", // Hover background color
   },
   linkText: {
     color: "white",
     fontSize: 18 * scaleFactor,
     fontFamily: "Cinzel-Decorative",
     marginVertical: 10 * scaleFactor,
+  },
+  underline: {
+    textDecorationLine: "underline",
   },
 });

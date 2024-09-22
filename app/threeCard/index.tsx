@@ -9,8 +9,9 @@ import {
   ImageBackground,
 } from "react-native";
 import { Asset } from "expo-asset";
-import { tarotDeck } from "@/classes/TarotDeck";
-import styles from "./threeCardStyles.js";
+import { tarotDeck } from "../../classes/TarotDeck";
+import styles from "./threeCardStyles";
+import { useDeck } from "../../services/DeckContext";
 
 type TarotCard = {
   name: string;
@@ -21,23 +22,20 @@ type TarotCard = {
 
 export default function ThreeCard() {
   const [cards, setCards] = useState<
-    Array<{
+    {
       card: TarotCard;
       isReversed: boolean;
       flipAnim: Animated.Value;
       textAnim: Animated.Value;
-    }>
+    }[]
   >([]);
 
-  const cardBack =
-    Platform.OS === "web"
-      ? "/assets/images/back-card.png"
-      : Asset.fromModule(require("../../assets/images/back-card.png")).uri;
+  const { cardBack } = useDeck(); // Access card back from DeckContext
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/castle.jpg"
-      : Asset.fromModule(require("../../assets/images/castle.jpg")).uri;
+      ? "/assets/images/three.png"
+      : Asset.fromModule(require("../../assets/images/three.png")).uri;
 
   const drawCard = () => {
     if (cards.length >= 3) return;
@@ -116,7 +114,7 @@ export default function ThreeCard() {
                 ]}
               >
                 <Image
-                  source={{ uri: cardBack }}
+                  source={{ uri: cardBack }} // Use cardBack from the DeckContext here
                   style={styles.threeCardImage}
                 />
               </Animated.View>
@@ -180,7 +178,7 @@ export default function ThreeCard() {
                   <Text
                     style={[
                       styles.cardDescription,
-                      { fontFamily: "Monsteratt-Variable" },
+                      { fontFamily: "Montserrat-Variable_900" },
                     ]}
                   >
                     {card.isReversed
@@ -193,7 +191,6 @@ export default function ThreeCard() {
           );
         })}
       </View>
-
       <Pressable
         onPress={cards.length < 3 ? drawCard : resetCards}
         style={styles.threeButtonStyle}

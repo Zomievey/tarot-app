@@ -9,8 +9,9 @@ import {
   ImageBackground,
 } from "react-native";
 import { Asset } from "expo-asset";
-import { tarotDeck } from "@/classes/TarotDeck";
+import { tarotDeck } from "../../classes/TarotDeck";
 import styles from "./singleCardStyles";
+import { useDeck } from "../../services/DeckContext";
 
 type TarotCard = {
   name: string;
@@ -27,16 +28,12 @@ export default function SingleCard() {
 
   const [flipAnim] = useState(new Animated.Value(0)); // Flip animation
   const [textAnim] = useState(new Animated.Value(0)); // Text fade-in animation
-
-  const cardBack =
-    Platform.OS === "web"
-      ? "/assets/images/back-card.png"
-      : Asset.fromModule(require("../../assets/images/back-card.png")).uri;
+  const { cardBack } = useDeck(); // Use the card back image from the DeckContext
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/moon.png"
-      : Asset.fromModule(require("../../assets/images/moon.png")).uri;
+      ? "/assets/images/single.png"
+      : Asset.fromModule(require("../../assets/images/single.png")).uri;
 
   const drawCard = () => {
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
@@ -96,6 +93,7 @@ export default function SingleCard() {
             {
               opacity: backOpacity,
               transform: [{ rotateY: flipInterpolate }],
+              position: "absolute", // Ensure the front card is stacked on top
             },
           ]}
         >
@@ -109,7 +107,7 @@ export default function SingleCard() {
             {
               opacity: frontOpacity,
               transform: [{ rotateY: flipInterpolate }],
-              position: 'absolute', // Ensure the front card is stacked on top
+              position: "absolute", // Ensure the front card is stacked on top
             },
           ]}
         >
@@ -121,10 +119,13 @@ export default function SingleCard() {
                 {
                   transform: [
                     { rotate: card.isReversed ? "180deg" : "0deg" },
-                    { scaleX: flipAnim.interpolate({ // Mirror the image initially
+                    {
+                      scaleX: flipAnim.interpolate({
+                        // Mirror the image initially
                         inputRange: [0, 0.5, 1],
-                        outputRange: [-1, -1, 1] // Starts mirrored, ends normal
-                    }) }
+                        outputRange: [-1, -1, 1], // Starts mirrored, ends normal
+                      }),
+                    },
                   ],
                 },
               ]}
@@ -133,7 +134,8 @@ export default function SingleCard() {
         </Animated.View>
       </View>
 
-      {/* Card Title and Description */}
+      {/* Fixed space for description to prevent layout shift */}
+      {/* Only show the description when a card is drawn */}
       {card.card && (
         <Animated.View
           style={[
@@ -154,14 +156,18 @@ export default function SingleCard() {
           <Text style={[styles.cardName, { fontFamily: "Cinzel-Decorative" }]}>
             {card.card.name}
           </Text>
-          <Text style={[styles.cardDescription, { fontFamily: "Monsteratt-Variable" }]}>
+          <Text
+            style={[
+              styles.cardDescription,
+              { fontFamily: "Montserrat-Variable_900" }, // Corrected typo
+            ]}
+          >
             {card.isReversed
               ? card.card.reversedDescription
               : card.card.description}
           </Text>
         </Animated.View>
       )}
-
       <Pressable onPress={drawCard} style={styles.buttonStyle}>
         <Text style={styles.buttonText}>SELECT A CARD</Text>
       </Pressable>

@@ -1,13 +1,11 @@
 import React from "react";
-import { View, Text, Pressable, ImageBackground, Platform } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { View, Text, ImageBackground, Platform } from "react-native";
+import { Link } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import styles from "./styles";
 import { Asset } from "expo-asset";
 
 export default function Index() {
-  const router = useRouter();
-
   const backgroundImage =
     Platform.OS === "web"
       ? "/assets/images/main-background.png"
@@ -25,29 +23,28 @@ export default function Index() {
           </Text>
 
           <Link style={styles.linkText} href='/singleCard'>
-            <FontAwesome name='star-o' size={20} color='white' />
-            {" "}
-            <Text> SINGLE CARD READING</Text>
+            <Text>
+              <FontAwesome name='star-o' size={20} color='white' /> CARD OF THE DAY
+            </Text>
           </Link>
 
           <Link style={styles.linkText} href='/threeCard'>
-            <FontAwesome name='star-o' size={20} color='white' />
-            {" "}
-            <Text> THREE CARD READING</Text>
+            <Text>
+              <FontAwesome name='star-o' size={20} color='white' /> THREE CARD SPREAD
+            </Text>
           </Link>
 
-          {/* Uncomment this section for five-card reading */}
-          {/* <Pressable
-            onPress={() => {
-              router.push("/fiveCard"); 
-            }}
-            style={({ pressed }) => [
-              styles.homebuttonStyle,
-              pressed && styles.buttonHover,
-            ]}
-          >
-            <Text style={styles.buttonText}>FIVE CARD READING</Text>
-          </Pressable> */}
+          <Link style={styles.linkText} href='/fiveCard'>
+            <Text>
+              <FontAwesome name='star-o' size={20} color='white' /> FIVE CARD SPREAD
+            </Text>
+          </Link>
+
+          <Link style={styles.linkText} href='/customizeDeck'>
+            <Text>
+              <FontAwesome name='star-o' size={20} color='white' /> CUSTOMIZE DECK
+            </Text>
+          </Link>
         </View>
       </View>
     </ImageBackground>

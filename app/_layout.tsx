@@ -2,16 +2,31 @@ import { SplashScreen, Stack } from "expo-router";
 import Footer from "./components/footer/Footer";
 import { ActivityIndicator, View, Dimensions, Platform } from "react-native";
 import { useFonts } from "expo-font";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react"; // import useEffect
+import { DeckProvider } from "../services/DeckContext"; // Import DeckProvider
 
 export default function Layout() {
   SplashScreen.preventAutoHideAsync();
 
-  const [fontsLoaded] = useFonts({
+  // Using expo-font's useFonts hook to load fonts
+  const [fontsLoaded, error] = useFonts({
     "Cinzel-Decorative": require("../assets/fonts/CinzelDecorative-Regular.ttf"),
     "Montserrat-Variable": require("../assets/fonts/Montserrat-VariableFont_wght.ttf"),
     "Space-Mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+
+  // Log the state of fontsLoaded and any errors
+  useEffect(() => {
+    if (!fontsLoaded) {
+      console.log("Loading fonts...");
+    } else {
+      console.log("Fonts loaded successfully");
+    }
+
+    if (error) {
+      console.error("Error loading fonts:", error);
+    }
+  }, [fontsLoaded, error]);
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -31,26 +46,28 @@ export default function Layout() {
   }
 
   return (
-    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <Stack
-        screenOptions={{
-          headerShown: true,
-          title: "",
-          headerTransparent: true,
-          headerTintColor: "#FFFFFF",
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: headerFontSize,
-            fontFamily: "Cinzel-Decorative",
-          },
-          headerBackTitle: "Back",
-          headerBackTitleStyle: {
-            fontSize: backTitleFontSize,
-            fontFamily: "Cinzel-Decorative",
-          },
-        }}
-      />
-      <Footer />
-    </View>
+    <DeckProvider>
+      <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+        <Stack
+          screenOptions={{
+            headerShown: true,
+            title: "",
+            headerTransparent: true,
+            headerTintColor: "#FFFFFF",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: headerFontSize,
+              fontFamily: "Cinzel-Decorative",
+            },
+            headerBackTitle: "Back",
+            headerBackTitleStyle: {
+              fontSize: backTitleFontSize,
+              fontFamily: "Cinzel-Decorative",
+            },
+          }}
+        />
+        <Footer />
+      </View>
+    </DeckProvider>
   );
 }

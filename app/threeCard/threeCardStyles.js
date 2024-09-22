@@ -74,7 +74,7 @@ export default StyleSheet.create({
   },  
   threeButtonStyle: {
     position: "absolute",
-    bottom: 80,
+    bottom: 80 * scaleFactor, // Adjust button position
     backgroundColor: "#1C152A",
     padding: 10 * scaleFactor,
     borderRadius: 10 * scaleFactor,

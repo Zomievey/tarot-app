@@ -4,66 +4,68 @@ const { width, height } = Dimensions.get("window");
 
 const isWeb = Platform.OS === "web"; // Separate web check
 const isTablet = Platform.OS === "ios" && height / width < 1.6; // Adjusted check for tablet
-const scaleFactor = (isWeb || isTablet) ? 1.5 : 1; // Scaling based on device type
+const scaleFactor = isWeb || isTablet ? 1.5 : 1; // Scaling based on device type
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start", // Align content to the top like three card
     alignItems: "center",
     paddingHorizontal: 10 * scaleFactor,
-    paddingTop: 0, // Ensures content starts at the top
+    paddingTop: 150 * scaleFactor, // Adjust top padding to match the spacing in three cards
   },
   cardWrapper: {
-    // Adjust card size based on whether it's mobile, tablet, or web
-    width: isWeb
-      ? width * 0.3 // Specific size for web (30% of screen width)
-      : isTablet
-      ? width * 0.45 // Smaller size for tablet (45% of screen width)
-      : width * 0.6, // Larger size for mobile (60% of screen width)
-    aspectRatio: 2 / 3, // Maintain the aspect ratio of a typical tarot card (2:3)
+    width: isWeb ? width * 0.3 : isTablet ? width * 0.45 : width * 0.6,
+    aspectRatio: 2 / 3,
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    marginBottom: 10 * scaleFactor, // Maintain consistent spacing
+    marginBottom: 5 * scaleFactor, // Reduced spacing between card and description to match three cards
   },
   cardImageWrapper: {
     width: "100%",
     height: "100%",
-    borderRadius: 10 * scaleFactor, // Apply a border radius to the card
-    overflow: "hidden", // Clip the children to match the border radius
+    borderRadius: 10 * scaleFactor,
+    overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
   },
   cardImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "stretch", // Ensure the card scales properly
+    resizeMode: "stretch",
   },
   descriptionWrapper: {
     alignItems: "center",
-    paddingTop: 0 * scaleFactor, // Keep text close to the card
-    paddingHorizontal: 5 * scaleFactor, // Add padding for better text layout
-    width: isWeb ? width * 0.3 : isTablet ? width * 0.45 : width * 0.6, // Match width with the card's width
+    paddingHorizontal: 5 * scaleFactor,
+    paddingTop: 5 * scaleFactor, // Keep spacing close to card
+    width: isWeb ? width * 0.3 : isTablet ? width * 0.95 : width * 0.95,
   },
   cardName: {
-    fontSize: isWeb ? 20 * scaleFactor : isTablet ? 22 * scaleFactor : 24 * scaleFactor, // Adjust font size based on platform
+    fontSize: isWeb
+      ? 20 * scaleFactor
+      : isTablet
+        ? 24 * scaleFactor
+        : 22 * scaleFactor,
     color: "#FFFFFF",
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 0 * scaleFactor, // Keep card name close to the description
+    marginBottom: 5 * scaleFactor, // Adjust margin to match three cards
   },
   cardDescription: {
-    fontSize: isWeb ? 10 * scaleFactor : isTablet ? 12 * scaleFactor : 14 * scaleFactor, // Adjust font size for the description
+    fontSize: isWeb
+      ? 10 * scaleFactor
+      : isTablet
+        ? 20 * scaleFactor
+        : 18 * scaleFactor,
     color: "white",
     textAlign: "center",
-    fontWeight: "700",
-    marginTop: 0 * scaleFactor, // Remove extra spacing for tighter text
-    paddingHorizontal: 10 * scaleFactor, // Add some horizontal padding for better readability
+    paddingHorizontal: 10 * scaleFactor,
+    marginTop: 5 * scaleFactor, // Match margin with three-card layout
   },
   buttonStyle: {
-    position: 'absolute', // Make the button position absolute
-    bottom: 80, // Fixed distance from the bottom of the screen
+    position: "absolute",
+    bottom: 65 * scaleFactor, // Adjust button position to match three cards
     backgroundColor: "#1C152A",
     padding: 10 * scaleFactor,
     borderRadius: 10 * scaleFactor,
