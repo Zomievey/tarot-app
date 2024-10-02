@@ -19,7 +19,6 @@ export default StyleSheet.create({
     justifyContent: "space-around", // Spread cards evenly
     alignItems: "flex-start",
     width: "100%",
-    paddingHorizontal: 10 * scaleFactor,
     marginBottom: 150 * scaleFactor, // Reduce spacing below cards
   },
   threeCardContainer: {
@@ -29,13 +28,12 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    marginBottom: 10 * scaleFactor, // Space below the card
     marginTop: 10 * scaleFactor, // Add space at the top of each card
   },
   cardImageWrapper: {
-    width: "100%",
+    width: "85%",
     aspectRatio: 2 / 3, // Maintain the card aspect ratio
-    borderRadius: 10 * scaleFactor, // Apply a smaller border radius
+    borderRadius: 5 * scaleFactor, // Apply a smaller border radius
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
@@ -47,8 +45,6 @@ export default StyleSheet.create({
   },
   descriptionWrapper: {
     alignItems: "center",
-    paddingTop: 5 * scaleFactor,
-    paddingHorizontal: 5 * scaleFactor,
     width: width * 0.3, // Increase width to give more space to the text
     position: "absolute",
     top: "100%", // Move the text directly below the card
@@ -62,7 +58,7 @@ export default StyleSheet.create({
     overflow: "hidden", // Ensure text doesn't overflow the container
   },
   cardDescription: {
-    fontSize: 12 * scaleFactor,
+    fontSize: isTabletOrWeb ? 16 * scaleFactor : 12 * scaleFactor,
     color: "white",
     fontWeight: "700",
     marginTop: 5 * scaleFactor,
@@ -71,7 +67,7 @@ export default StyleSheet.create({
     numberOfLines: 3, // Ensure the text wraps properly within a fixed number of lines
     overflow: "hidden", // Prevent text from overflowing
     lineBreakMode: "tail", // Ensures that if the text is too long, it gets truncated at the end
-  },  
+  },
   threeButtonStyle: {
     position: "absolute",
     bottom: 80 * scaleFactor, // Adjust button position

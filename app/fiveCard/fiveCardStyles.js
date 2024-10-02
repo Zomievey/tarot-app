@@ -7,54 +7,51 @@ const isTabletOrWeb =
 const scaleFactor = isTabletOrWeb ? 1.5 : 1;
 
 export default StyleSheet.create({
-  threeContainer: {
+  fiveContainer: {
     flex: 1,
     justifyContent: "flex-start", // Align content to the top
     alignItems: "center",
     paddingHorizontal: 10 * scaleFactor,
     paddingTop: 0, // Reduce padding to push cards higher
   },
-  threeCardWrapper: {
+  fiveCardWrapper: {
     flexDirection: "row",
-    justifyContent: "space-around", // Spread cards evenly
+    justifyContent: "center", // Center the cards on the screen
     alignItems: "flex-start",
-    width: "100%",
-    paddingHorizontal: 10 * scaleFactor,
-    marginBottom: 150 * scaleFactor, // Reduce spacing below cards
+    width: "84%", // Ensure it spans the full width
+    marginRight: 25 * scaleFactor, // Add margin to the right
+    marginBottom: isTabletOrWeb ? 310 * scaleFactor : 190 * scaleFactor,
   },
-  threeCardContainer: {
+  fiveCardContainer: {
     // Adjust the width of each card to be larger
-    width: width * (isTabletOrWeb ? 0.3 : 0.25), // Increased width for both mobile and tablet
+    width: width * (isTabletOrWeb ? 0.20 : 0.22), // Increased width for both mobile and tablet
     aspectRatio: 2 / 3, // Maintain the aspect ratio of a typical tarot card (2:3)
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    marginBottom: 10 * scaleFactor, // Space below the card
-    marginTop: 10 * scaleFactor, // Add space at the top of each card
+    marginTop: 10 * scaleFactor,
   },
   cardImageWrapper: {
-    width: "100%",
+    width: "85%",
     aspectRatio: 2 / 3, // Maintain the card aspect ratio
-    borderRadius: 10 * scaleFactor, // Apply a smaller border radius
+    borderRadius: 5 * scaleFactor, // Apply a smaller border radius
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
   },
-  threeCardImage: {
+  fiveCardImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "stretch",
+    resizeMode: "stretch", // Ensure the image fits within the card bounds without distortion
   },
   descriptionWrapper: {
     alignItems: "center",
-    paddingTop: 5 * scaleFactor,
-    paddingHorizontal: 5 * scaleFactor,
-    width: width * 0.3, // Increase width to give more space to the text
+    width: width * 0.22, // Increase width to give more space to the text
     position: "absolute",
     top: "100%", // Move the text directly below the card
   },
   cardName: {
-    fontSize: isTabletOrWeb ? 20 * scaleFactor : 14 * scaleFactor, // Larger font size on tablet/web
+    fontSize: isTabletOrWeb ? 18 * scaleFactor : 12 * scaleFactor, // Larger font size on tablet/web
     color: "#FFFFFF",
     textAlign: "center",
     fontWeight: "bold",
@@ -62,17 +59,18 @@ export default StyleSheet.create({
     overflow: "hidden", // Ensure text doesn't overflow the container
   },
   cardDescription: {
-    fontSize: 12 * scaleFactor,
+    fontSize: isTabletOrWeb ? 13 * scaleFactor : 8 * scaleFactor,
     color: "white",
     fontWeight: "700",
     marginTop: 5 * scaleFactor,
-    width: width * 0.3, // Adjust the width of the description to match the card
+    width: width * 0.20, // Adjust the width of the description to match the card
     textAlign: "center", // Keep the text centered
     numberOfLines: 3, // Ensure the text wraps properly within a fixed number of lines
     overflow: "hidden", // Prevent text from overflowing
-    lineBreakMode: "tail", // Ensures that if the text is too long, it gets truncated at the end
-  },  
-  threeButtonStyle: {
+    lineBreakMode: "tail", // Truncate if too long
+  },
+
+  fiveButtonStyle: {
     position: "absolute",
     bottom: 80 * scaleFactor, // Adjust button position
     backgroundColor: "#1C152A",

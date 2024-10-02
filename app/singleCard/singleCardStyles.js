@@ -25,7 +25,7 @@ export default StyleSheet.create({
   cardImageWrapper: {
     width: "100%",
     height: "100%",
-    borderRadius: 10 * scaleFactor,
+    borderRadius: 5 * scaleFactor,
     overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",

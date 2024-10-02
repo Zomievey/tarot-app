@@ -48,9 +48,10 @@ export const DeckProvider: React.FC<{ children: React.ReactNode }> = ({
     const loadCardBackFromStorage = async () => {
       try {
         const storedCardBack = await AsyncStorage.getItem("cardBack");
-        console.log("Loaded cardBack from AsyncStorage:", storedCardBack); // Add this log statement to see the loaded value
         if (storedCardBack) {
           setCardBack(storedCardBack);
+        } else {
+          console.warn("No cardBack found in AsyncStorage, using default.");
         }
       } catch (error) {
         console.error("Error loading cardBack from AsyncStorage:", error);
@@ -66,6 +67,7 @@ export const DeckProvider: React.FC<{ children: React.ReactNode }> = ({
     saveCardBackToStorage(newCardBack); // Save the new cardBack to storage
   }, []);
 
+  // Memoize the value to prevent unnecessary re-renders
   const value = React.useMemo(
     () => ({ cardBack, setCardBack: updateCardBack }),
     [cardBack, updateCardBack]
