@@ -181,7 +181,7 @@ export default function CustomizeDeck() {
             onPressOut={() => setIsButtonPressed(false)} // When the button is released
             onPress={pickImage}
           >
-            <Text style={styles.uploadButtonText}>Upload Design</Text>
+            <Text style={styles.uploadButtonText}>UPLOAD NEW DESIGN</Text>
           </Pressable>
 
           {/* This View centers the "Current Card Back:" and its image */}

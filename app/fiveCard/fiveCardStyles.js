@@ -18,19 +18,21 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center", // Center the cards on the screen
     alignItems: "flex-start",
-    width: "84%", // Ensure it spans the full width
+    width: "90%", // You may increase or decrease the width to control overall spacing
     marginRight: 25 * scaleFactor, // Add margin to the right
     marginBottom: isTabletOrWeb ? 310 * scaleFactor : 190 * scaleFactor,
   },
+  
   fiveCardContainer: {
-    // Adjust the width of each card to be larger
-    width: width * (isTabletOrWeb ? 0.20 : 0.22), // Increased width for both mobile and tablet
+    width: width * (isTabletOrWeb ? 0.18 : 0.20), // Adjust the width to make room for margins
     aspectRatio: 2 / 3, // Maintain the aspect ratio of a typical tarot card (2:3)
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
+    marginHorizontal: 8 * scaleFactor, // Add horizontal margin to create space between the cards
     marginTop: 10 * scaleFactor,
   },
+  
   cardImageWrapper: {
     width: "85%",
     aspectRatio: 2 / 3, // Maintain the card aspect ratio

@@ -31,17 +31,29 @@ export default function ThreeCard() {
   >([]);
 
   const { cardBack } = useDeck(); // Access card back from DeckContext
+  const [cardCount, setCardCount] = useState(0); // Track the number of revealed cards
 
   const backgroundImage =
     Platform.OS === "web"
       ? "/assets/images/three.png"
       : Asset.fromModule(require("../../assets/images/three.png")).uri;
 
-  const drawCard = () => {
-    if (cards.length >= 3) return;
+  // Helper function to check if a card has already been drawn (both upright or reversed)
+  const isCardAlreadyDrawn = (card: TarotCard) => {
+    return cards.some((drawnCard) => drawnCard.card.name === card.name);
+  };
 
-    const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
-    const isReversed = Math.random() < 0.5;
+  const drawCard = () => {
+    if (cards.length >= 3) return; // Do not draw more than 3 cards
+
+    let randomCard;
+    let isReversed;
+
+    // Ensure we draw a unique card (both upright and reversed)
+    do {
+      randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
+      isReversed = Math.random() < 0.5;
+    } while (isCardAlreadyDrawn(randomCard)); // Repeat if card was already drawn
 
     // Create new flip and text animations for this card
     const flipAnim = new Animated.Value(0);
@@ -49,23 +61,34 @@ export default function ThreeCard() {
 
     setCards([...cards, { card: randomCard, isReversed, flipAnim, textAnim }]);
 
-    // Start the flip animation
+    // Animate the card flip and text
     Animated.timing(flipAnim, {
       toValue: 1,
       duration: 800,
       useNativeDriver: true,
     }).start(() => {
-      // Start the text animation after the flip
       Animated.timing(textAnim, {
         toValue: 1,
         duration: 400,
         useNativeDriver: true,
       }).start();
     });
+
+    // Update the card count
+    setCardCount(cardCount + 1);
   };
 
   const resetCards = () => {
     setCards([]);
+    setCardCount(0); // Reset card count
+  };
+
+  // Determine button text based on the card count
+  const getButtonText = () => {
+    if (cardCount === 0) return "Reveal First Card";
+    if (cardCount === 1) return "Reveal Second Card";
+    if (cardCount === 2) return "Reveal Third Card";
+    return "Reset";
   };
 
   return (
@@ -173,7 +196,10 @@ export default function ThreeCard() {
                       { fontFamily: "Cinzel-Decorative" },
                     ]}
                   >
-                    {card.card.name}
+                    {/* Append "Reversed" if the card is reversed */}
+                    {card.isReversed
+                      ? `${card.card.name} Reversed`
+                      : card.card.name}
                   </Text>
                   <Text
                     style={[
@@ -192,12 +218,10 @@ export default function ThreeCard() {
         })}
       </View>
       <Pressable
-        onPress={cards.length < 3 ? drawCard : resetCards}
+        onPress={cardCount < 3 ? drawCard : resetCards} // Draw cards until 3, then reset
         style={styles.threeButtonStyle}
       >
-        <Text style={styles.buttonText}>
-          {cards.length < 3 ? "SELECT A CARD" : "RESET"}
-        </Text>
+        <Text style={styles.buttonText}>{getButtonText()}</Text>
       </Pressable>
     </ImageBackground>
   );

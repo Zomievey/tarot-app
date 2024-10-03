@@ -30,9 +30,8 @@ export default function FiveCard() {
       textAnim: Animated.Value;
     }[]
   >([]);
-
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null); // Track currently active card
-
+  const [cardCount, setCardCount] = useState(0); // Track number of revealed cards
   const { cardBack } = useDeck(); // Access card back from DeckContext
 
   const backgroundImage =
@@ -40,11 +39,22 @@ export default function FiveCard() {
       ? "/assets/images/five.jpg"
       : Asset.fromModule(require("../../assets/images/five.jpg")).uri;
 
-  const drawCard = () => {
-    if (cards.length >= 5) return;
+  // Helper function to check if a card has already been drawn (both upright or reversed)
+  const isCardAlreadyDrawn = (card: TarotCard) => {
+    return cards.some((drawnCard) => drawnCard.card.name === card.name);
+  };
 
-    const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
-    const isReversed = Math.random() < 0.5;
+  const drawCard = () => {
+    if (cardCount >= 5) return; // Limit to 5 cards
+
+    let randomCard;
+    let isReversed;
+
+    // Ensure we draw a unique card (both upright and reversed)
+    do {
+      randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
+      isReversed = Math.random() < 0.5;
+    } while (isCardAlreadyDrawn(randomCard)); // Repeat if card was already drawn
 
     // Create new flip and text animations for this card
     const flipAnim = new Animated.Value(0);
@@ -68,11 +78,15 @@ export default function FiveCard() {
         useNativeDriver: true,
       }).start();
     });
+
+    // Increment card count
+    setCardCount(cardCount + 1);
   };
 
   const resetCards = () => {
     setCards([]);
     setActiveCardIndex(null); // Reset the active card
+    setCardCount(0); // Reset card count
   };
 
   const handleCardPress = (index: number) => {
@@ -80,6 +94,16 @@ export default function FiveCard() {
     if (card && card.flipAnim.__getValue() === 1) {
       setActiveCardIndex(index); // Set the clicked card as the active card
     }
+  };
+
+  // Determine button text based on the number of revealed cards
+  const getButtonText = () => {
+    if (cardCount === 0) return "Reveal First Card";
+    if (cardCount === 1) return "Reveal Second Card";
+    if (cardCount === 2) return "Reveal Third Card";
+    if (cardCount === 3) return "Reveal Fourth Card";
+    if (cardCount === 4) return "Reveal Fifth Card";
+    return "Reset";
   };
 
   return (
@@ -108,8 +132,8 @@ export default function FiveCard() {
           return (
             <Pressable
               key={index}
-              onPress={() => handleCardPress(index)} // Only allow pressing flipped cards
-              disabled={!card || card.flipAnim._value < 1} // Disable clicking if card is not yet flipped
+              onPress={() => handleCardPress(index)} // Enable tapping to view previous cards
+              disabled={!card || card.flipAnim._value < 1} // Disable tapping if card hasn't flipped
               style={{ flex: 1 }}
             >
               <Animated.View
@@ -204,7 +228,10 @@ export default function FiveCard() {
                         { fontFamily: "Cinzel-Decorative" },
                       ]}
                     >
-                      {card.card.name}
+                      {/* Append "Reversed" if the card is reversed */}
+                      {card.isReversed
+                        ? `${card.card.name} Reversed`
+                        : card.card.name}
                     </Text>
                     <Text
                       style={[
@@ -212,6 +239,7 @@ export default function FiveCard() {
                         { fontFamily: "Montserrat-Variable_900" },
                       ]}
                     >
+                      {/* Show the reversed description if card is reversed */}
                       {card.isReversed
                         ? card.card.reversedDescription
                         : card.card.description}
@@ -225,12 +253,10 @@ export default function FiveCard() {
       </View>
 
       <Pressable
-        onPress={cards.length < 5 ? drawCard : resetCards}
+        onPress={cardCount < 5 ? drawCard : resetCards} // Draw cards until 5, then reset
         style={styles.fiveButtonStyle}
       >
-        <Text style={styles.buttonText}>
-          {cards.length < 5 ? "SELECT A CARD" : "RESET"}
-        </Text>
+        <Text style={styles.buttonText}>{getButtonText()}</Text>
       </Pressable>
     </ImageBackground>
   );

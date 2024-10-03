@@ -169,7 +169,7 @@ export default function SingleCard() {
         </Animated.View>
       )}
       <Pressable onPress={drawCard} style={styles.buttonStyle}>
-        <Text style={styles.buttonText}>SELECT A CARD</Text>
+        <Text style={styles.buttonText}>Reveal Your Card</Text>
       </Pressable>
     </ImageBackground>
   );
