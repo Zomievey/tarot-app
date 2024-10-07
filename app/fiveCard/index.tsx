@@ -21,15 +21,16 @@ type TarotCard = {
   reversedDescription: string;
 };
 
+type AnimatedCard = {
+  card: TarotCard;
+  isReversed: boolean;
+  flipAnim: Animated.Value;
+  textAnim: Animated.Value;
+  flipped: boolean;
+};
+
 export default function FiveCard() {
-  const [cards, setCards] = useState<
-    {
-      card: TarotCard;
-      isReversed: boolean;
-      flipAnim: Animated.Value;
-      textAnim: Animated.Value;
-    }[]
-  >([]);
+  const [cards, setCards] = useState<AnimatedCard[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null); // Track currently active card
   const [cardCount, setCardCount] = useState(0); // Track number of revealed cards
   const { cardBack } = useDeck(); // Access card back from DeckContext
@@ -60,10 +61,23 @@ export default function FiveCard() {
     const flipAnim = new Animated.Value(0);
     const textAnim = new Animated.Value(0);
 
-    setCards([...cards, { card: randomCard, isReversed, flipAnim, textAnim }]);
+    // Initialize flipped to false
+    const newCard: AnimatedCard = {
+      card: randomCard,
+      isReversed,
+      flipAnim,
+      textAnim,
+      flipped: false,
+    };
+
+    // Capture the index of the new card
+    const newCardIndex = cards.length;
+
+    // Update cards array
+    setCards([...cards, newCard]);
 
     // Automatically select the newly flipped card
-    setActiveCardIndex(cards.length);
+    setActiveCardIndex(newCardIndex);
 
     // Start the flip animation
     Animated.timing(flipAnim, {
@@ -71,6 +85,13 @@ export default function FiveCard() {
       duration: 800,
       useNativeDriver: true,
     }).start(() => {
+      // Mark the card as flipped
+      setCards((prevCards) => {
+        const updatedCards = [...prevCards];
+        updatedCards[newCardIndex] = { ...updatedCards[newCardIndex], flipped: true };
+        return updatedCards;
+      });
+
       // Start the text animation after the flip
       Animated.timing(textAnim, {
         toValue: 1,
@@ -91,7 +112,7 @@ export default function FiveCard() {
 
   const handleCardPress = (index: number) => {
     const card = cards[index];
-    if (card && card.flipAnim.__getValue() === 1) {
+    if (card && card.flipped) {
       setActiveCardIndex(index); // Set the clicked card as the active card
     }
   };
@@ -133,7 +154,7 @@ export default function FiveCard() {
             <Pressable
               key={index}
               onPress={() => handleCardPress(index)} // Enable tapping to view previous cards
-              disabled={!card || card.flipAnim._value < 1} // Disable tapping if card hasn't flipped
+              disabled={!card || !card.flipped} // Disable tapping if card hasn't flipped
               style={{ flex: 1 }}
             >
               <Animated.View

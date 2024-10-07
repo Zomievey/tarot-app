@@ -154,12 +154,13 @@ export default function SingleCard() {
           ]}
         >
           <Text style={[styles.cardName, { fontFamily: "Cinzel-Decorative" }]}>
-            {card.card.name}
+            {/* Check if card is reversed and append "Reversed" to the name */}
+            {card.isReversed ? `${card.card.name} Reversed` : card.card.name}
           </Text>
           <Text
             style={[
               styles.cardDescription,
-              { fontFamily: "Montserrat-Variable_900" }, // Corrected typo
+              { fontFamily: "Montserrat-Variable_900" },
             ]}
           >
             {card.isReversed
