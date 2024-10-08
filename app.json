@@ -4,13 +4,12 @@
     "slug": "tarot-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/appstore.png",  // Updated the icon path here
+    "icon": "./assets/images/appstore.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/moon.png",
+      "resizeMode": "cover"
     },
     "ios": {
       "supportsTablet": true,

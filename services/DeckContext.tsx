@@ -51,7 +51,8 @@ export const DeckProvider: React.FC<{ children: React.ReactNode }> = ({
         if (storedCardBack) {
           setCardBack(storedCardBack);
         } else {
-          console.warn("No cardBack found in AsyncStorage, using default.");
+          // No need to log a warning here if you don't want to see it
+          setCardBack(defaultCardBack); // Optionally set a default value
         }
       } catch (error) {
         console.error("Error loading cardBack from AsyncStorage:", error);
