@@ -4,11 +4,11 @@
     "slug": "tarot-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/appicon.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/moon.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "cover"
     },
     "ios": {
