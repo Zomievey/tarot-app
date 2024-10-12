@@ -99,7 +99,7 @@ export const tarotDeck = [
     description:
       "Courage, patience, and inner strength. Mastery of emotions and the quiet power of compassion and resilience.",
     reversedDescription:
-      "Self-doubt, weakness, and raw emotions, feeling overwhelmed. Struggles with inner strength and a need for self-compassion.",
+      "Self-doubt, weakness, and raw emotions. You may be feeling overwhelmed. Struggles with inner strength and a need for self-compassion.",
   },
   {
     name: "Justice",
@@ -320,7 +320,7 @@ export const tarotDeck = [
     description:
       "Perseverance, defense, maintaining control. You are standing your ground and defending your position against opposition.",
     reversedDescription:
-      "Overwhelmed, giving up, feeling vulnerable. You might feel outnumbered or struggle to keep up with the demands.",
+      "Overwhelmed, giving up, and feeling vulnerable. You might feel outnumbered or struggle to keep up with the demands.",
   },
   {
     name: "Eight of Wands",
@@ -342,7 +342,7 @@ export const tarotDeck = [
     description:
       "Resilience, courage, persistence. You're facing challenges but have the strength and determination to keep going.",
     reversedDescription:
-      "Exhaustion, overwhelm, defensiveness. You might feel drained or overly protective, finding it hard to continue.",
+      "Exhaustion, overwhelmed, defensiveness. You might feel drained or overly protective, finding it hard to continue.",
   },
   {
     name: "Ten of Wands",
@@ -727,7 +727,7 @@ export const tarotDeck = [
     description:
       "Balance, adaptability, time management, juggling resources. This card suggests the need to balance multiple aspects of life, such as work and personal responsibilities.",
     reversedDescription:
-      "Overwhelm, lack of balance, financial disarray. You may be struggling to manage your responsibilities or feeling overwhelmed by life's demands.",
+      "Disorganized, lack of balance, financial disarray. You may be struggling to manage your responsibilities or feeling overwhelmed by life's demands.",
   },
   {
     name: "Three of Pentacles",
@@ -837,7 +837,7 @@ export const tarotDeck = [
     description:
       "Hard work, responsibility, productivity, routine. The Knight represents a diligent and responsible approach to achieving goals, emphasizing persistence and dedication.",
     reversedDescription:
-      "Laziness, stubbornness, lack of progress. There might be a feeling of being stuck, overly cautious, or resistant to change and new methods.",
+      "Laziness, stubbornness, and lack of progress. There might be a feeling of being stuck, overly cautious, or resistant to change and new methods.",
   },
   {
     name: "Queen of Pentacles",
