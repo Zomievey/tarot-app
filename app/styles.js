@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window");
 const isTabletOrWeb =
   Platform.OS === "web" || (Platform.OS === "ios" && height / width < 1.6);
 
-const scaleFactor = isTabletOrWeb ? 1.5 : 1;
+const scaleFactor = isTabletOrWeb ? 2 : 1;
 
 export default StyleSheet.create({
   container: {

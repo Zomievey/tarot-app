@@ -41,12 +41,19 @@ export default function CustomizeDeck() {
         ];
 
   useEffect(() => {
-    // Fetch the custom image from AsyncStorage when the app starts
+    // Fetch the custom image from AsyncStorage or localStorage when the app starts
     const loadCustomImage = async () => {
       try {
-        const savedCustomImage = await AsyncStorage.getItem("customImage");
-        if (savedCustomImage) {
-          setCustomImage(savedCustomImage); // Restore the saved image URI
+        if (Platform.OS === "web") {
+          const savedCustomImage = localStorage.getItem("customImage");
+          if (savedCustomImage) {
+            setCustomImage(savedCustomImage); // Restore the saved image URI from localStorage on web
+          }
+        } else {
+          const savedCustomImage = await AsyncStorage.getItem("customImage");
+          if (savedCustomImage) {
+            setCustomImage(savedCustomImage); // Restore the saved image URI from AsyncStorage on mobile
+          }
         }
       } catch (error) {
         console.error("Failed to load custom image:", error);
@@ -84,27 +91,74 @@ export default function CustomizeDeck() {
       await AsyncStorage.setItem("customImage", uri); // Save the URI to AsyncStorage for persistence
     }
   };
-
   // Function to delete the uploaded custom image
   const deleteImage = async () => {
-    Alert.alert(
-      "Delete Image",
-      "Are you sure you want to delete the custom image?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Delete",
-          onPress: async () => {
-            setCustomImage(null); // Clear the custom image
-            await AsyncStorage.removeItem("customImage"); // Remove from AsyncStorage
+    console.log("Delete button clicked!"); // Debugging log to check if function is triggered
+
+    if (Platform.OS === "web") {
+      // Use the native browser confirm dialog for web
+      const confirmDeletion = window.confirm(
+        "Are you sure you want to delete your custom card design?"
+      );
+      if (confirmDeletion) {
+        console.log("Confirmed deletion"); // Check if 'Delete' button in confirm dialog is pressed
+
+        // Clear the custom image in state
+        setCustomImage(null);
+
+        try {
+          // Log current localStorage content
+          const storedImage = localStorage.getItem("customImage");
+          console.log(
+            "Before deletion - customImage from localStorage:",
+            storedImage
+          );
+
+          // Remove from localStorage
+          localStorage.removeItem("customImage");
+
+          // Check if removal was successful
+          const removedImage = localStorage.getItem("customImage");
+          console.log(
+            "After deletion - customImage from localStorage:",
+            removedImage
+          );
+
+          console.log("Custom image removed from localStorage (Web)");
+        } catch (error) {
+          console.error("Failed to remove custom image:", error);
+        }
+      }
+    } else {
+      // Use Alert for mobile platforms
+      Alert.alert(
+        "Delete Image",
+        "Are you sure you want to delete the custom image?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
           },
-        },
-      ],
-      { cancelable: true }
-    );
+          {
+            text: "Delete",
+            onPress: async () => {
+              console.log("Confirmed deletion"); // Check if 'Delete' button in alert is pressed
+
+              // Clear the custom image in state
+              setCustomImage(null);
+
+              try {
+                await AsyncStorage.removeItem("customImage");
+                console.log("Custom image removed from AsyncStorage (Mobile)");
+              } catch (error) {
+                console.error("Failed to remove custom image:", error);
+              }
+            },
+          },
+        ],
+        { cancelable: true }
+      );
+    }
   };
 
   return (
@@ -134,7 +188,8 @@ export default function CustomizeDeck() {
                   style={[
                     styles.dynamicImageSize,
                     {
-                      borderColor: backImage === cardBack ? "#A17BDC" : "transparent", // Highlight selected in choices
+                      borderColor:
+                        backImage === cardBack ? "#A17BDC" : "transparent", // Highlight selected in choices
                       borderWidth: backImage === cardBack ? 2 : 0, // Add border only for selected
                     },
                   ]}
@@ -154,19 +209,21 @@ export default function CustomizeDeck() {
                     style={[
                       styles.dynamicImageSize,
                       {
-                        borderColor: customImage === cardBack ? "#A17BDC" : "transparent", // Highlight selected in choices
-                        borderWidth: customImage === cardBack ? 2 : 0, // Add border only for selected
+                        borderColor:
+                          customImage === cardBack ? "#A17BDC" : "transparent",
+                        borderWidth: customImage === cardBack ? 2 : 0,
                       },
                     ]}
                   />
                 </Pressable>
 
-                {/* Show the delete icon only on mobile */}
-                {Platform.OS !== "web" && (
-                  <Pressable onPress={deleteImage} style={styles.deleteIconWrapper}>
-                    <MaterialIcons name="close" style={styles.deleteIcon} />
-                  </Pressable>
-                )}
+                {/* Show the delete icon on both web and mobile */}
+                <Pressable
+                  onPress={deleteImage}
+                  style={styles.deleteIconWrapper}
+                >
+                  <MaterialIcons name='close' style={styles.deleteIcon} />
+                </Pressable>
               </View>
             )}
           </View>

@@ -15,7 +15,12 @@ export default StyleSheet.create({
     paddingTop: 150 * scaleFactor, // Adjust top padding to match the spacing in three cards
   },
   cardWrapper: {
-    width: isWeb ? width * 0.3 : isTablet ? width * 0.45 : width * 0.6,
+    // Adjust the card size based on platform
+    width: isWeb
+      ? width * 0.42 // Increase size for web
+      : isTablet
+        ? width * 0.45 // Slightly larger for tablet
+        : width * 0.6, // Default size for mobile
     aspectRatio: 2 / 3,
     justifyContent: "center",
     alignItems: "center",
@@ -33,17 +38,21 @@ export default StyleSheet.create({
   cardImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "stretch",
+    resizeMode: "stretch", // Stretch image to fit the wrapper
   },
   descriptionWrapper: {
     alignItems: "center",
     paddingHorizontal: 5 * scaleFactor,
     paddingTop: 5 * scaleFactor, // Keep spacing close to card
-    width: isWeb ? width * 0.3 : isTablet ? width * 0.95 : width * 0.95,
+    width: isWeb
+      ? width * 0.7 // Adjust description width for web
+      : isTablet
+        ? width * 0.95
+        : width * 0.95,
   },
   cardName: {
     fontSize: isWeb
-      ? 20 * scaleFactor
+      ? 24 * scaleFactor // Larger font size for web
       : isTablet
         ? 24 * scaleFactor
         : 22 * scaleFactor,
@@ -54,7 +63,7 @@ export default StyleSheet.create({
   },
   cardDescription: {
     fontSize: isWeb
-      ? 10 * scaleFactor
+      ? 20 * scaleFactor
       : isTablet
         ? 20 * scaleFactor
         : 18 * scaleFactor,
