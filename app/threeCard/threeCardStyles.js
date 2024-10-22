@@ -63,10 +63,7 @@ export default StyleSheet.create({
     fontSize: isTablet || isWeb ? 12 * scaleFactor : 12 * scaleFactor,
     color: "white",
     fontWeight: "700",
-    width: width * 0.3, // Adjust the width of the description to match the card
-    textAlign: "center", // Keep the text centered
-    numberOfLines: 3, // Ensure the text wraps properly within a fixed number of lines
-    overflow: "hidden", // Prevent text from overflowing
-    lineBreakMode: "tail", // Ensures that if the text is too long, it gets truncated at the end
+    width: width * 0.3, 
+    textAlign: "center", 
   },
 });

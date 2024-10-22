@@ -11,7 +11,6 @@ export default function Layout() {
   // Using expo-font's useFonts hook to load fonts
   const [fontsLoaded, error] = useFonts({
     "Cinzel-Decorative": require("../assets/fonts/CinzelDecorative-Regular.ttf"),
-    "Montserrat-Variable": require("../assets/fonts/Montserrat-VariableFont_wght.ttf"),
     "Space-Mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 

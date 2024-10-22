@@ -83,7 +83,6 @@ export default StyleSheet.create({
     color: "white",
     fontFamily: "Cinzel-Decorative",
     textAlign: "center",
-    textBreakStrategy: "balanced",
     marginBottom: 15 * scaleFactor, // Better handling of text layout
   },
   welcomeCustom: {

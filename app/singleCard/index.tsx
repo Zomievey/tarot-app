@@ -164,10 +164,9 @@ export default function SingleCard() {
               : " "}
           </Text>
           <Text
-            style={[
-              styles.cardDescription,
-              { fontFamily: "Montserrat-Variable_900" },
-            ]}
+            style={[styles.cardDescription]}
+            numberOfLines={20}
+            lineBreakMode='tail'
           >
             {card.card
               ? card.isReversed

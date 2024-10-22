@@ -25,7 +25,7 @@ export default StyleSheet.create({
     width: isWeb
       ? width * 0.35 // Increase size for web
       : isTablet
-        ? width * 0.45 // Slightly larger for tablet
+        ? width * 0.40 // Slightly larger for tablet
         : width * 0.6, // Default size for mobile
     aspectRatio: 2 / 3,
     justifyContent: "center",
@@ -54,7 +54,7 @@ export default StyleSheet.create({
       : isTablet
         ? width * 0.95
         : width * 0.95,
-    height: 80 * scaleFactor, // Reserve space for the description
+    height: 100 * scaleFactor, // Reserve space for the description
     justifyContent: "flex-start", // Align content at the top
   },
   cardName: {
@@ -72,7 +72,7 @@ export default StyleSheet.create({
     fontSize: isWeb
       ? 16 * scaleFactor
       : isTablet
-        ? 20 * scaleFactor
+        ? 18 * scaleFactor
         : 18 * scaleFactor,
     color: "white",
     textAlign: "center",

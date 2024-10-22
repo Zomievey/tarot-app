@@ -150,7 +150,7 @@ export default function FiveCard() {
                   inputRange: [0, 1],
                   outputRange: ["0deg", "180deg"], // Full flip
                 })
-              : "0deg";
+              : "0deg"; // Fallback value if flipAnim is undefined
 
           // Handle scaling for the active card
           const scale = isActive
@@ -256,18 +256,15 @@ export default function FiveCard() {
                         { fontFamily: "Cinzel-Decorative" },
                       ]}
                     >
-                      {/* Append "Reversed" if the card is reversed */}
                       {card.isReversed
                         ? `${card.card.name} Reversed`
                         : card.card.name}
                     </Text>
                     <Text
-                      style={[
-                        styles.cardDescription,
-                        { fontFamily: "Montserrat-Variable_900" },
-                      ]}
+                      style={[styles.cardDescription]}
+                      numberOfLines={20}
+                      lineBreakMode='tail'
                     >
-                      {/* Show the reversed description if card is reversed */}
                       {card.isReversed
                         ? card.card.reversedDescription
                         : card.card.description}

@@ -104,7 +104,7 @@ export default StyleSheet.create({
   },
   sharedButtonText: {
     color: "white",
-    fontSize: 16 * scaleFactor,
+    fontSize: 12 * scaleFactor,
     fontFamily: "Cinzel-Decorative",
   },
 });

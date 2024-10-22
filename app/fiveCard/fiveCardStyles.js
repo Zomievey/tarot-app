@@ -15,23 +15,23 @@ export default StyleSheet.create({
   },
   fiveCardWrapper: {
     flexDirection: "row",
-    justifyContent: "center", // Center the cards on the screen
+    justifyContent: "center",
     alignItems: "flex-start",
-    width: "90%", // Use the full width of the container
-    marginRight: isTablet || isWeb ? 100 : 25 * scaleFactor, // Adjust padding for mobile
-    marginBottom: isWeb ? 575 : 150, // Add margin for web
+    width: "90%",
+    marginRight: isTablet || isWeb ? 100 : 25 * scaleFactor,
+    marginBottom: isWeb ? 600 : 150,
   },
   fiveCardContainer: {
-    width: width * (isTablet || isWeb ? 0.21 : 0.2), // Adjust the card width
-    aspectRatio: 2 / 3, // Maintain the card's aspect ratio
+    width: width * (isTablet || isWeb ? 0.21 : 0.2),
+    aspectRatio: 2 / 3,
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    marginHorizontal: 12 * scaleFactor, // Increased space between cards
+    marginHorizontal: 12 * scaleFactor,
   },
   cardImageWrapper: {
     width: "80%",
-    aspectRatio: 2 / 3, // Maintain the card aspect ratio
+    aspectRatio: 2 / 3,
     borderRadius: 5 * scaleFactor,
     overflow: "hidden",
     justifyContent: "center",
@@ -40,39 +40,36 @@ export default StyleSheet.create({
   fiveCardImage: {
     width: "100%",
     height: "100%",
-    resizeMode: "stretch", // Ensure the image fits within the card bounds
+    resizeMode: "stretch",
   },
   descriptionWrapper: {
     alignItems: "center",
-    width: width * 0.20, // Increase width for more text space
+    width: width * 0.2,
     position: "absolute",
-    top: "100%", // Place the text directly below the card
-    paddingHorizontal: 5 * scaleFactor, // Add padding to ensure text isn't cut off
+    top: "95%", // Adjusted to bring the text closer to the card
+    paddingHorizontal: 5 * scaleFactor,
   },
   cardName: {
     fontSize: isWeb
-    ? 14 * scaleFactor // Larger font size for web
-    : isTablet
-      ? 12 * scaleFactor
-      : 12 * scaleFactor,
+      ? 14 * scaleFactor
+      : isTablet
+        ? 12 * scaleFactor
+        : 12 * scaleFactor,
     color: "#FFFFFF",
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 5 * scaleFactor,
-    overflow: "hidden", // Ensure text doesn't overflow the container
+    marginBottom: 0, // Removed extra margin to reduce space
+    overflow: "hidden",
   },
   cardDescription: {
     fontSize: isWeb
-    ? 10 * scaleFactor // Larger font size for web
-    : isTablet
-      ? 8 * scaleFactor
-      : 10 * scaleFactor,
+      ? 10 * scaleFactor
+      : isTablet
+        ? 10 * scaleFactor
+        : 10 * scaleFactor,
     color: "white",
     fontWeight: "700",
-    width: width * 0.20, // Increase width for description
+    width: width * 0.2,
     textAlign: "center",
-    numberOfLines: 3, // Ensure text wraps within a fixed number of lines
-    overflow: "hidden", // Prevent text from overflowing
-    lineBreakMode: "tail", // Truncate text if it's too long
   },
 });

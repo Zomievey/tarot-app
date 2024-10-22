@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ImageBackground, Platform } from "react-native";
+import { View, Text, ImageBackground, Platform, ScrollView } from "react-native";
 import { Link } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import styles from "./globalStyles";
@@ -13,7 +13,7 @@ export default function Index() {
 
   const titleFont = "Cinzel-Decorative";
 
-  return (
+  const content = (
     <ImageBackground source={{ uri: backgroundImage }} style={styles.container}>
       {/* Wrapper for title and buttons with semi-transparent background */}
       <View style={styles.overlayContainer}>
@@ -22,31 +22,41 @@ export default function Index() {
             Pocket Tarot
           </Text>
 
-          <Link style={styles.linkText} href='/singleCard'>
+          <Link style={styles.linkText} href='/singleCard/'>
             <Text>
-              <FontAwesome name='star-o' size={20} color='white' /> CARD OF THE DAY
+              <FontAwesome name='star-o' size={20} color='white' /> CARD OF THE
+              DAY
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/threeCard'>
+          <Link style={styles.linkText} href='/threeCard/'>
             <Text>
-              <FontAwesome name='star-o' size={20} color='white' /> THREE CARD SPREAD
+              <FontAwesome name='star-o' size={20} color='white' /> THREE CARD
+              SPREAD
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/fiveCard'>
+          <Link style={styles.linkText} href='/fiveCard/'>
             <Text>
-              <FontAwesome name='star-o' size={20} color='white' /> FIVE CARD SPREAD
+              <FontAwesome name='star-o' size={20} color='white' /> FIVE CARD
+              SPREAD
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/customizeDeck'>
+          <Link style={styles.linkText} href='/customizeDeck/'>
             <Text>
-              <FontAwesome name='star-o' size={20} color='white' /> CUSTOMIZE DECK
+              <FontAwesome name='star-o' size={20} color='white' /> CUSTOMIZE
+              DECK
             </Text>
           </Link>
         </View>
       </View>
     </ImageBackground>
+  );
+
+  return Platform.OS === "web" ? (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{content}</ScrollView>
+  ) : (
+    <>{content}</>
   );
 }

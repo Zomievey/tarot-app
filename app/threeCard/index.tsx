@@ -198,16 +198,14 @@ export default function ThreeCard() {
                       { fontFamily: "Cinzel-Decorative" },
                     ]}
                   >
-                    {/* Append "Reversed" if the card is reversed */}
                     {card.isReversed
                       ? `${card.card.name} Reversed`
                       : card.card.name}
                   </Text>
                   <Text
-                    style={[
-                      styles.cardDescription,
-                      { fontFamily: "Montserrat-Variable_900" },
-                    ]}
+                    style={[styles.cardDescription]}
+                    numberOfLines={20}
+                    lineBreakMode='tail'
                   >
                     {card.isReversed
                       ? card.card.reversedDescription
@@ -220,7 +218,7 @@ export default function ThreeCard() {
         })}
       </View>
       <Pressable
-        onPress={cardCount < 3 ? drawCard : resetCards} // Draw cards until 3, then reset
+        onPress={cardCount < 3 ? drawCard : resetCards}
         style={globalStyles.sharedButtonStyle}
       >
         <Text style={globalStyles.sharedButtonText}>{getButtonText()}</Text>

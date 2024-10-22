@@ -7,6 +7,7 @@ import {
   Platform,
   ImageBackground,
   Alert,
+  ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
@@ -41,7 +42,7 @@ export default function CustomizeDeck() {
         ];
 
   useEffect(() => {
-    // Fetch the custom image from AsyncStorage or localStorage when the app starts
+    // Fetch the custom image and card back from AsyncStorage/localStorage when the app starts
     const loadCustomImage = async () => {
       try {
         if (Platform.OS === "web") {
@@ -60,8 +61,16 @@ export default function CustomizeDeck() {
       }
     };
 
+    const checkAndSetDefaultCardBack = () => {
+      if (!cardBack) {
+        // Set the first predefined image as default if no card back is set
+        setCardBack(backCardImages[0]);
+      }
+    };
+
     loadCustomImage();
-  }, []);
+    checkAndSetDefaultCardBack();
+  }, [cardBack]); // Add cardBack as a dependency to ensure it runs if it's undefined
 
   const handleSelectCardBack = (newCardBack: string) => {
     setCardBack(newCardBack); // Update the card back globally when an image is clicked
@@ -161,7 +170,7 @@ export default function CustomizeDeck() {
     }
   };
 
-  return (
+  const content = (
     <ImageBackground
       source={{ uri: backgroundImage }}
       style={styles.containerCustom}
@@ -257,5 +266,10 @@ export default function CustomizeDeck() {
         </View>
       </View>
     </ImageBackground>
+  );
+  return Platform.OS === "web" ? (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{content}</ScrollView>
+  ) : (
+    <>{content}</>
   );
 }
