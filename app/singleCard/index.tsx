@@ -7,10 +7,12 @@ import {
   Pressable,
   Image,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { Asset } from "expo-asset";
 import { tarotDeck } from "../../classes/TarotDeck";
 import styles from "./singleCardStyles";
+import globalStyles from "../globalStyles"; // Import global styles
 import { useDeck } from "../../services/DeckContext";
 
 type TarotCard = {
@@ -83,60 +85,61 @@ export default function SingleCard() {
     outputRange: [1, 0, 0], // Initially visible, becomes hidden after flip
   });
 
-  return (
+  const content = (
     <ImageBackground source={{ uri: backgroundImage }} style={styles.container}>
-      <View style={styles.cardWrapper}>
-        {/* Card Back Image */}
-        <Animated.View
-          style={[
-            styles.cardImageWrapper,
-            {
-              opacity: backOpacity,
-              transform: [{ rotateY: flipInterpolate }],
-              position: "absolute", // Ensure the front card is stacked on top
-            },
-          ]}
-        >
-          <Image source={{ uri: cardBack }} style={styles.cardImage} />
-        </Animated.View>
+      {/* Added singleCardWrapper to wrap the card and its description */}
+      <View style={styles.singleCardWrapper}>
+        <View style={styles.cardWrapper}>
+          {/* Card Back Image */}
+          <Animated.View
+            style={[
+              styles.cardImageWrapper,
+              {
+                opacity: backOpacity,
+                transform: [{ rotateY: flipInterpolate }],
+                position: "absolute", // Ensure the front card is stacked on top
+              },
+            ]}
+          >
+            <Image source={{ uri: cardBack }} style={styles.cardImage} />
+          </Animated.View>
 
-        {/* Card Front Image */}
-        <Animated.View
-          style={[
-            styles.cardImageWrapper,
-            {
-              opacity: frontOpacity,
-              transform: [{ rotateY: flipInterpolate }],
-              position: "absolute", // Ensure the front card is stacked on top
-            },
-          ]}
-        >
-          {card.card && ( // Ensure this block renders only if a card is drawn
-            <Animated.Image
-              source={{ uri: card.card.image }}
-              style={[
-                styles.cardImage,
-                {
-                  transform: [
-                    { rotate: card.isReversed ? "180deg" : "0deg" },
-                    {
-                      scaleX: flipAnim.interpolate({
-                        // Mirror the image initially
-                        inputRange: [0, 0.5, 1],
-                        outputRange: [-1, -1, 1], // Starts mirrored, ends normal
-                      }),
-                    },
-                  ],
-                },
-              ]}
-            />
-          )}
-        </Animated.View>
-      </View>
+          {/* Card Front Image */}
+          <Animated.View
+            style={[
+              styles.cardImageWrapper,
+              {
+                opacity: frontOpacity,
+                transform: [{ rotateY: flipInterpolate }],
+                position: "absolute", // Ensure the front card is stacked on top
+              },
+            ]}
+          >
+            {card.card && ( // Ensure this block renders only if a card is drawn
+              <Animated.Image
+                source={{ uri: card.card.image }}
+                style={[
+                  styles.cardImage,
+                  {
+                    transform: [
+                      { rotate: card.isReversed ? "180deg" : "0deg" },
+                      {
+                        scaleX: flipAnim.interpolate({
+                          // Mirror the image initially
+                          inputRange: [0, 0.5, 1],
+                          outputRange: [-1, -1, 1], // Starts mirrored, ends normal
+                        }),
+                      },
+                    ],
+                  },
+                ]}
+              />
+            )}
+          </Animated.View>
+        </View>
 
-      {/* Fixed space for description to prevent layout shift */}
-      {/* Only show the description when a card is drawn */}
-      {card.card && (
+        {/* Fixed space for description to prevent layout shift */}
+        {/* Only show the description when a card is drawn */}
         <Animated.View
           style={[
             styles.descriptionWrapper,
@@ -154,8 +157,11 @@ export default function SingleCard() {
           ]}
         >
           <Text style={[styles.cardName, { fontFamily: "Cinzel-Decorative" }]}>
-            {/* Check if card is reversed and append "Reversed" to the name */}
-            {card.isReversed ? `${card.card.name} Reversed` : card.card.name}
+            {card.card
+              ? card.isReversed
+                ? `${card.card.name} Reversed`
+                : card.card.name
+              : " "}
           </Text>
           <Text
             style={[
@@ -163,15 +169,24 @@ export default function SingleCard() {
               { fontFamily: "Montserrat-Variable_900" },
             ]}
           >
-            {card.isReversed
-              ? card.card.reversedDescription
-              : card.card.description}
+            {card.card
+              ? card.isReversed
+                ? card.card.reversedDescription
+                : card.card.description
+              : " "}
           </Text>
         </Animated.View>
-      )}
-      <Pressable onPress={drawCard} style={styles.buttonStyle}>
-        <Text style={styles.buttonText}>Reveal Your Card</Text>
+      </View>
+
+      <Pressable onPress={drawCard} style={globalStyles.sharedButtonStyle}>
+        <Text style={globalStyles.sharedButtonText}>Reveal Your Card</Text>
       </Pressable>
     </ImageBackground>
+  );
+
+  return Platform.OS === "web" ? (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{content}</ScrollView>
+  ) : (
+    <>{content}</>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ImageBackground, Platform } from "react-native";
 import { Link } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
-import styles from "./styles";
+import styles from "./globalStyles";
 import { Asset } from "expo-asset";
 
 export default function Index() {

@@ -8,10 +8,12 @@ import {
   Image,
   ImageBackground,
   ImageStyle,
+  ScrollView,
 } from "react-native";
 import { Asset } from "expo-asset";
 import { tarotDeck } from "../../classes/TarotDeck";
-import styles from "./fiveCardStyles"; // Import the updated five card styles
+import styles from "./fiveCardStyles";
+import globalStyles from "../globalStyles";
 import { useDeck } from "../../services/DeckContext";
 
 type TarotCard = {
@@ -88,7 +90,10 @@ export default function FiveCard() {
       // Mark the card as flipped
       setCards((prevCards) => {
         const updatedCards = [...prevCards];
-        updatedCards[newCardIndex] = { ...updatedCards[newCardIndex], flipped: true };
+        updatedCards[newCardIndex] = {
+          ...updatedCards[newCardIndex],
+          flipped: true,
+        };
         return updatedCards;
       });
 
@@ -127,7 +132,7 @@ export default function FiveCard() {
     return "Reset";
   };
 
-  return (
+  const content = (
     <ImageBackground
       source={{ uri: backgroundImage }}
       style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -138,12 +143,14 @@ export default function FiveCard() {
           const isActive = index === activeCardIndex;
 
           // Determine the card flip interpolation
-          const flipInterpolate = card
-            ? card.flipAnim.interpolate({
-                inputRange: [0, 1],
-                outputRange: ["0deg", "180deg"], // Full flip
-              })
-            : "0deg";
+          // Determine the card flip interpolation
+          const flipInterpolate =
+            card && card.flipAnim
+              ? card.flipAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ["0deg", "180deg"], // Full flip
+                })
+              : "0deg";
 
           // Handle scaling for the active card
           const scale = isActive
@@ -275,10 +282,16 @@ export default function FiveCard() {
 
       <Pressable
         onPress={cardCount < 5 ? drawCard : resetCards} // Draw cards until 5, then reset
-        style={styles.fiveButtonStyle}
+        style={globalStyles.sharedButtonStyle}
       >
-        <Text style={styles.buttonText}>{getButtonText()}</Text>
+        <Text style={globalStyles.sharedButtonText}>{getButtonText()}</Text>
       </Pressable>
     </ImageBackground>
+  );
+
+  return Platform.OS === "web" ? (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{content}</ScrollView>
+  ) : (
+    <>{content}</>
   );
 }

@@ -2,9 +2,9 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-const isWeb = Platform.OS === "web"; // Separate web check
-const isTablet = Platform.OS === "ios" && height / width < 1.6; // Adjusted check for tablet
-const scaleFactor = isWeb || isTablet ? 1.5 : 1; // Scaling based on device type
+const isTablet = Platform.OS === "ios" && height / width < 1.6;
+const isWeb = Platform.OS === "web";
+const scaleFactor = isTablet || isWeb ? 2 : 1;
 
 export default StyleSheet.create({
   container: {
@@ -12,12 +12,18 @@ export default StyleSheet.create({
     justifyContent: "flex-start", // Align content to the top like three card
     alignItems: "center",
     paddingHorizontal: 10 * scaleFactor,
-    paddingTop: 150 * scaleFactor, // Adjust top padding to match the spacing in three cards
+    paddingTop: isWeb ? 55 * scaleFactor : 150, // Adjust padding similar to three card
+  },
+  singleCardWrapper: {
+    justifyContent: "center", // Center the card
+    alignItems: "center",
+    width: "100%", // Use full width to center the card horizontally
+    marginBottom: isWeb ? 270 : 150, // Add margin for web like in three card and five card
   },
   cardWrapper: {
     // Adjust the card size based on platform
     width: isWeb
-      ? width * 0.42 // Increase size for web
+      ? width * 0.35 // Increase size for web
       : isTablet
         ? width * 0.45 // Slightly larger for tablet
         : width * 0.6, // Default size for mobile
@@ -25,7 +31,6 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    marginBottom: 5 * scaleFactor, // Reduced spacing between card and description to match three cards
   },
   cardImageWrapper: {
     width: "100%",
@@ -49,41 +54,29 @@ export default StyleSheet.create({
       : isTablet
         ? width * 0.95
         : width * 0.95,
+    height: 80 * scaleFactor, // Reserve space for the description
+    justifyContent: "flex-start", // Align content at the top
   },
   cardName: {
     fontSize: isWeb
-      ? 24 * scaleFactor // Larger font size for web
+      ? 20 * scaleFactor // Larger font size for web
       : isTablet
         ? 24 * scaleFactor
         : 22 * scaleFactor,
     color: "#FFFFFF",
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 5 * scaleFactor, // Adjust margin to match three cards
+    marginTop: 10 * scaleFactor,
   },
   cardDescription: {
     fontSize: isWeb
-      ? 20 * scaleFactor
+      ? 16 * scaleFactor
       : isTablet
         ? 20 * scaleFactor
         : 18 * scaleFactor,
     color: "white",
     textAlign: "center",
+    fontWeight: "700",
     paddingHorizontal: 10 * scaleFactor,
-    marginTop: 5 * scaleFactor, // Match margin with three-card layout
-  },
-  buttonStyle: {
-    position: "absolute",
-    bottom: 65 * scaleFactor, // Adjust button position to match three cards
-    backgroundColor: "#1C152A",
-    padding: 10 * scaleFactor,
-    borderRadius: 10 * scaleFactor,
-    alignItems: "center",
-    alignSelf: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16 * scaleFactor,
-    fontFamily: "Cinzel-Decorative",
   },
 });

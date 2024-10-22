@@ -7,10 +7,12 @@ import {
   Pressable,
   Image,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { Asset } from "expo-asset";
 import { tarotDeck } from "../../classes/TarotDeck";
 import styles from "./threeCardStyles";
+import globalStyles from "../globalStyles";
 import { useDeck } from "../../services/DeckContext";
 
 type TarotCard = {
@@ -91,7 +93,7 @@ export default function ThreeCard() {
     return "Reset";
   };
 
-  return (
+  const content = (
     <ImageBackground
       source={{ uri: backgroundImage }}
       style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -219,10 +221,16 @@ export default function ThreeCard() {
       </View>
       <Pressable
         onPress={cardCount < 3 ? drawCard : resetCards} // Draw cards until 3, then reset
-        style={styles.threeButtonStyle}
+        style={globalStyles.sharedButtonStyle}
       >
-        <Text style={styles.buttonText}>{getButtonText()}</Text>
+        <Text style={globalStyles.sharedButtonText}>{getButtonText()}</Text>
       </Pressable>
     </ImageBackground>
+  );
+
+  return Platform.OS === "web" ? (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>{content}</ScrollView>
+  ) : (
+    <>{content}</>
   );
 }
