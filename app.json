@@ -31,6 +31,10 @@
     "plugins": [
       "expo-router"
     ],
+    "assetBundlePatterns": [
+      "assets/images/*",
+      "assets/fonts/*"
+    ],
     "experiments": {
       "typedRoutes": true
     },
