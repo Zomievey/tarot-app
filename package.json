@@ -7,6 +7,7 @@
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
     "build:web": "expo export -p web && npx workbox-cli generateSW workbox-config.js",
+    "vercel-build": "npm run build",
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
