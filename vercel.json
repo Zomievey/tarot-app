@@ -4,10 +4,11 @@
       {
         "src": "package.json",
         "use": "@vercel/static-build",
-        "config": { "distDir": "web-build" }
+        "config": { "distDir": "dist" }
       }
     ],
     "routes": [
+      { "src": "/sw.js", "dest": "/sw.js" }, 
       { "src": "/(.*)", "dest": "/" }
     ]
   }
