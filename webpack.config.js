@@ -12,6 +12,19 @@ module.exports = async function (env, argv) {
     crypto: 'crypto-browserify',
   };
 
+  // Add rule to handle font files (.ttf)
+  config.module.rules.push({
+    test: /\.(ttf|otf|eot|woff|woff2)$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: '[path][name].[ext]',
+        outputPath: 'static/fonts/',
+        publicPath: '/_next/static/fonts/', // Ensure the fonts are served correctly by Next.js
+      },
+    },
+  });
+
   config.plugins.push(
     new WorkboxPlugin.GenerateSW({
       swDest: 'dist/sw.js',
@@ -48,19 +61,6 @@ module.exports = async function (env, argv) {
       ],
     })
   );
-
-  // Add custom loader for font files (.ttf)
-  config.module.rules.push({
-    test: /\.(ttf|woff|woff2|eot|otf)$/,
-    use: {
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
-        outputPath: 'static/fonts/', // Saves fonts to /static/fonts
-        publicPath: '/_next/static/fonts', // Path to access fonts in Next.js
-      },
-    },
-  });
 
   return config;
 };
