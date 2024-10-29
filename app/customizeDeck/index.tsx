@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   View,
   Text,
@@ -30,16 +30,19 @@ export default function CustomizeDeck() {
   const titleFont = "Cinzel-Decorative";
 
   // Example back-card images (Replace with actual image URIs or local assets)
-  const backCardImages =
-    Platform.OS === "web"
-      ? [
-          "/assets/images/back-card.png", // Replace with actual web image URIs
-          "/assets/images/back-two.png",
-        ]
-      : [
-          Asset.fromModule(require("../../assets/images/back-card.png")).uri, // Local images for native platforms
-          Asset.fromModule(require("../../assets/images/back-two.png")).uri,
-        ];
+  const backCardImages = useMemo(
+    () =>
+      Platform.OS === "web"
+        ? [
+            "/assets/images/back-card.png", // Replace with actual web image URIs
+            "/assets/images/back-two.png",
+          ]
+        : [
+            Asset.fromModule(require("../../assets/images/back-card.png")).uri, // Local images for native platforms
+            Asset.fromModule(require("../../assets/images/back-two.png")).uri,
+          ],
+    []
+  );
 
   useEffect(() => {
     // Fetch the custom image and card back from AsyncStorage/localStorage when the app starts
@@ -70,7 +73,7 @@ export default function CustomizeDeck() {
 
     loadCustomImage();
     checkAndSetDefaultCardBack();
-  }, [cardBack]); // Add cardBack as a dependency to ensure it runs if it's undefined
+  }, [backCardImages, cardBack, setCardBack]); // Add cardBack as a dependency to ensure it runs if it's undefined
 
   const handleSelectCardBack = (newCardBack: string) => {
     setCardBack(newCardBack); // Update the card back globally when an image is clicked

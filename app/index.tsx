@@ -22,29 +22,29 @@ export default function Index() {
             Pocket Tarot
           </Text>
 
-          <Link style={styles.linkText} href='/singleCard/'>
-            <Text>
+          <Link href='/singleCard/'>
+            <Text style={styles.linkText}>
               <FontAwesome name='star-o' size={20} color='white' /> CARD OF THE
               DAY
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/threeCard/'>
-            <Text>
+          <Link href='/threeCard/'>
+            <Text style={styles.linkText}>
               <FontAwesome name='star-o' size={20} color='white' /> THREE CARD
               SPREAD
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/fiveCard/'>
-            <Text>
+          <Link href='/fiveCard/'>
+            <Text style={styles.linkText}>
               <FontAwesome name='star-o' size={20} color='white' /> FIVE CARD
               SPREAD
             </Text>
           </Link>
 
-          <Link style={styles.linkText} href='/customizeDeck/'>
-            <Text>
+          <Link href='/customizeDeck/'>
+            <Text style={styles.linkText}>
               <FontAwesome name='star-o' size={20} color='white' /> CUSTOMIZE
               DECK
             </Text>
