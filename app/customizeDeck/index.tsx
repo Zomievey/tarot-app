@@ -23,23 +23,22 @@ export default function CustomizeDeck() {
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/main-background.png"
-      : Asset.fromModule(require("../../assets/images/main-background.png"))
+      ? "/public/images/main-background.png"
+      : Asset.fromModule(require("../../public/images/main-background.png"))
           .uri;
 
   const titleFont = "Cinzel-Decorative";
 
-  // Example back-card images (Replace with actual image URIs or local assets)
   const backCardImages = useMemo(
     () =>
       Platform.OS === "web"
         ? [
-            "/assets/images/back-card.png", // Replace with actual web image URIs
-            "/assets/images/back-two.png",
+            "/public/images/back-card.png", // Replace with actual web image URIs
+            "/public/images/back-two.png",
           ]
         : [
-            Asset.fromModule(require("../../assets/images/back-card.png")).uri, // Local images for native platforms
-            Asset.fromModule(require("../../assets/images/back-two.png")).uri,
+            Asset.fromModule(require("../../public/images/back-card.png")).uri, // Local images for native platforms
+            Asset.fromModule(require("../../public/images/back-two.png")).uri,
           ],
     []
   );

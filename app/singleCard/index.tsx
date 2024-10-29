@@ -34,8 +34,8 @@ export default function SingleCard() {
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/single.png"
-      : Asset.fromModule(require("../../assets/images/single.png")).uri;
+      ? "/public/images/single.png"
+      : Asset.fromModule(require("../../public/images/single.png")).uri;
 
   const drawCard = () => {
     const randomCard = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];

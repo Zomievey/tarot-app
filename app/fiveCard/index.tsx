@@ -39,8 +39,8 @@ export default function FiveCard() {
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/five.jpg"
-      : Asset.fromModule(require("../../assets/images/five.jpg")).uri;
+      ? "/public/images/five.jpg"
+      : Asset.fromModule(require("../../public/images/five.jpg")).uri;
 
   // Helper function to check if a card has already been drawn (both upright or reversed)
   const isCardAlreadyDrawn = (card: TarotCard) => {

@@ -9,12 +9,12 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "./assets/images/appstore192.png",
+        "src": "./public/images/appstore192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "./assets/images/appstore512.png",
+        "src": "./public/images/appstore512.png",
         "sizes": "512x512",
         "type": "image/png"
       }

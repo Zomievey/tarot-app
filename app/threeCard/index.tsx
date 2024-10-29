@@ -37,8 +37,8 @@ export default function ThreeCard() {
 
   const backgroundImage =
     Platform.OS === "web"
-      ? "/assets/images/three.png"
-      : Asset.fromModule(require("../../assets/images/three.png")).uri;
+      ? "/public/images/three.png"
+      : Asset.fromModule(require("../../public/images/three.png")).uri;
 
   // Helper function to check if a card has already been drawn (both upright or reversed)
   const isCardAlreadyDrawn = (card: TarotCard) => {

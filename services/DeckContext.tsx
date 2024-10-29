@@ -29,8 +29,8 @@ export const DeckProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const defaultCardBack =
     Platform.OS === "web"
-      ? "/assets/images/back-card.png"
-      : Asset.fromModule(require("../assets/images/back-card.png")).uri;
+      ? "/public/images/back-card.png"
+      : Asset.fromModule(require("../public/images/back-card.png")).uri;
 
   const [cardBack, setCardBack] = useState<string>(defaultCardBack);
 
