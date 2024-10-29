@@ -3,7 +3,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = async function (env, argv) {
-  env.projectRoot = path.resolve(__dirname, './'); // Adjust this path as needed
+  env.projectRoot = path.resolve(__dirname, './');
 
   const config = await createExpoWebpackConfigAsync(env, argv);
 
@@ -12,16 +12,13 @@ module.exports = async function (env, argv) {
     crypto: 'crypto-browserify',
   };
 
-  // Add a rule for loading font files (.ttf, .woff, .woff2)
+  // Add a rule specifically for handling font files like .ttf
   config.module.rules.push({
     test: /\.(ttf|otf|eot|woff|woff2)$/,
-    use: {
-      loader: 'file-loader',
-      options: {
-        name: '[name].[hash].[ext]',
-        outputPath: 'static/fonts/', // This will place the font files in `.next/static/fonts/`
-        publicPath: '/_next/static/fonts/', // Ensures fonts are accessible via Next.js
-      },
+    type: 'asset/resource',  // This is simpler and more compatible for font files
+    generator: {
+      filename: 'static/fonts/[name].[hash][ext]',  // Ensures the fonts are outputted in the correct directory
+      publicPath: '/_next/',  // Fixes public path issues in Next.js
     },
   });
 
