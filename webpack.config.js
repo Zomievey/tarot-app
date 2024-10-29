@@ -12,14 +12,11 @@ module.exports = async function (env, argv) {
     crypto: 'crypto-browserify',
   };
 
-  // Handle font files including @expo/vector-icons fonts
+  // Ignore all font files from `@expo/vector-icons`
   config.module.rules.push({
     test: /\.(ttf|otf|eot|woff|woff2)$/,
-    type: 'asset/resource',
-    generator: {
-      filename: 'static/fonts/[name].[hash][ext]',
-      publicPath: '/_next/',
-    },
+    include: /@expo\/vector-icons/,
+    use: 'ignore-loader',
   });
 
   config.plugins.push(

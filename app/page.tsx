@@ -8,7 +8,12 @@ import {
 } from "react-native";
 import styles from "./globalStyles";
 import { Asset } from "expo-asset";
-import { FontAwesome } from "@expo/vector-icons";
+import dynamic from 'next/dynamic';
+
+const FontAwesome = dynamic(() =>
+  import('@expo/vector-icons').then((mod) => mod.FontAwesome), { ssr: false }
+);
+
 
 export default function Index() {
   const backgroundImage =
