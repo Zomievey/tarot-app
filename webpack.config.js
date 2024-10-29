@@ -12,15 +12,15 @@ module.exports = async function (env, argv) {
     crypto: 'crypto-browserify',
   };
 
-  // Add rule to handle font files (.ttf)
+  // Add a rule for loading font files (.ttf, .woff, .woff2)
   config.module.rules.push({
     test: /\.(ttf|otf|eot|woff|woff2)$/,
     use: {
       loader: 'file-loader',
       options: {
-        name: '[path][name].[ext]',
-        outputPath: 'static/fonts/',
-        publicPath: '/_next/static/fonts/', // Ensure the fonts are served correctly by Next.js
+        name: '[name].[hash].[ext]',
+        outputPath: 'static/fonts/', // This will place the font files in `.next/static/fonts/`
+        publicPath: '/_next/static/fonts/', // Ensures fonts are accessible via Next.js
       },
     },
   });
