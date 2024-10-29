@@ -51,12 +51,13 @@ module.exports = async function (env, argv) {
 
   // Add custom loader for font files (.ttf)
   config.module.rules.push({
-    test: /\.(ttf|woff|woff2|eot)$/,
+    test: /\.(ttf|woff|woff2|eot|otf)$/,
     use: {
       loader: 'file-loader',
       options: {
         name: '[name].[ext]',
-        outputPath: 'static/fonts/',
+        outputPath: 'static/fonts/', // Saves fonts to /static/fonts
+        publicPath: '/_next/static/fonts', // Path to access fonts in Next.js
       },
     },
   });
