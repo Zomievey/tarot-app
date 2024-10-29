@@ -12,13 +12,13 @@ module.exports = async function (env, argv) {
     crypto: 'crypto-browserify',
   };
 
-  // Add a rule specifically for handling font files like .ttf
+  // Handle font files including @expo/vector-icons fonts
   config.module.rules.push({
     test: /\.(ttf|otf|eot|woff|woff2)$/,
-    type: 'asset/resource',  // This is simpler and more compatible for font files
+    type: 'asset/resource',
     generator: {
-      filename: 'static/fonts/[name].[hash][ext]',  // Ensures the fonts are outputted in the correct directory
-      publicPath: '/_next/',  // Fixes public path issues in Next.js
+      filename: 'static/fonts/[name].[hash][ext]',
+      publicPath: '/_next/',
     },
   });
 
